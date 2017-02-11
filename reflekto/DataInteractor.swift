@@ -28,10 +28,9 @@ class DataInteractor {
                     failure(NSError(domain: "API Error", code: -1, userInfo: nil))
                     return
                 }
-                
                 let temperature = (json["currently"] as! [String: Any])["temperature"] as! Int
-                
                 success("\(city), \(temperature)°C")
+                
             }) { error in
                 failure(error)
             }
