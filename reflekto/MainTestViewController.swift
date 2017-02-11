@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainTestViewController: UITableViewController {
 
@@ -43,8 +44,11 @@ class MainTestViewController: UITableViewController {
     @IBOutlet weak var travelTimeLabel: UILabel!
     @IBOutlet weak var travelTimeIndicator: UIActivityIndicatorView!
     
+    let locManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        locManager.requestAlwaysAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +58,21 @@ class MainTestViewController: UITableViewController {
     
     private func refreshData() {
         showIndicators(true)
+        
         DataInteractor.getTime(success: { value in
-            timeIndicator.stopAnimating()
-            timeLabel.text = value
+            self.timeIndicator.stopAnimating()
+            self.timeLabel.text = value
         }) { error in
-            timeIndicator.stopAnimating()
-            timeLabel.text = error.localizedDescription
+            self.timeIndicator.stopAnimating()
+            self.timeLabel.text = error.localizedDescription
+        }
+        
+        DataInteractor.getWeather(success: { value in
+            self.watherIndicator.stopAnimating()
+            self.weatherLabel.text = value
+        }) { error in
+            self.watherIndicator.stopAnimating()
+            self.weatherLabel.text = error.localizedDescription
         }
         
     }
@@ -76,6 +89,19 @@ class MainTestViewController: UITableViewController {
         show ? calendarIndicator.startAnimating() : calendarIndicator.stopAnimating()
         show ? mailIndicator.startAnimating() : mailIndicator.stopAnimating()
         show ? travelTimeIndicator.startAnimating() : travelTimeIndicator.stopAnimating()
+        if show {
+            timeLabel.text = nil
+            weatherLabel.text = nil
+            greetingsLabel.text = nil
+            nameLabel.text = nil
+            sexLabel.text = nil
+            complimentLabel.text = nil
+            weatherAdditionalLabel.text = nil
+            weatherAdviceLabel.text = nil
+            calendarLabel.text = nil
+            mailLabel.text = nil
+            travelTimeLabel.text = nil
+        }
     }
     
     
