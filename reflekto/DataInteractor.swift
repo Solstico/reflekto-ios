@@ -12,7 +12,7 @@ typealias InteractorFailure = (Error) -> ()
 class DataInteractor {
     
     class func getTime(success: InteractorSuccess, failure: InteractorFailure) {
-        
+        success("10:09")
     }
     
 }
