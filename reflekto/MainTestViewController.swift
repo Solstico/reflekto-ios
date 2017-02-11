@@ -65,31 +65,17 @@ class MainTestViewController: UITableViewController {
     }
     
     private func showIndicators(_ show: Bool) {
-        if show {
-            timeIndicator.startAnimating()
-            watherIndicator.startAnimating()
-            greetingsIndicator.startAnimating()
-            nameIndicator.startAnimating()
-            sexIndicator.startAnimating()
-            complimentIndicator.startAnimating()
-            weatherAdditionalIndicator.startAnimating()
-            weatherAdviceIndicator.startAnimating()
-            calendarIndicator.startAnimating()
-            mailIndicator.startAnimating()
-            travelTimeIndicator.startAnimating()
-        } else {
-            timeIndicator.stopAnimating()
-            watherIndicator.stopAnimating()
-            greetingsIndicator.stopAnimating()
-            nameIndicator.stopAnimating()
-            sexIndicator.stopAnimating()
-            complimentIndicator.stopAnimating()
-            weatherAdditionalIndicator.stopAnimating()
-            weatherAdviceIndicator.stopAnimating()
-            calendarIndicator.stopAnimating()
-            mailIndicator.stopAnimating()
-            travelTimeIndicator.stopAnimating()
-        }
+        show ? timeIndicator.startAnimating() : timeIndicator.stopAnimating()
+        show ? watherIndicator.startAnimating() : watherIndicator.stopAnimating()
+        show ? greetingsIndicator.startAnimating() : greetingsIndicator.stopAnimating()
+        show ? nameIndicator.startAnimating() : nameIndicator.stopAnimating()
+        show ? sexIndicator.startAnimating() : sexIndicator.stopAnimating()
+        show ? complimentIndicator.startAnimating() : complimentIndicator.stopAnimating()
+        show ? weatherAdditionalIndicator.startAnimating() : weatherAdditionalIndicator.stopAnimating()
+        show ? weatherAdviceIndicator.startAnimating() : weatherAdviceIndicator.stopAnimating()
+        show ? calendarIndicator.startAnimating() : calendarIndicator.stopAnimating()
+        show ? mailIndicator.startAnimating() : mailIndicator.stopAnimating()
+        show ? travelTimeIndicator.startAnimating() : travelTimeIndicator.stopAnimating()
     }
     
     
