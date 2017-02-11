@@ -60,6 +60,7 @@
 		7C64ACFC1E4F14DF00240995 /* reflekto */ = {
 			isa = PBXGroup;
 			children = (
+				7C64AD181E4F4AEF00240995 /* Extension */,
 				7C64AD131E4F28A700240995 /* API */,
 				7C64AD101E4F153400240995 /* Interactor */,
 				7C64AD0F1E4F152C00240995 /* Interface */,
@@ -95,6 +96,13 @@
 				7C64AD141E4F28B900240995 /* WeatherAPI.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		7C64AD181E4F4AEF00240995 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias InteractorSuccess = (String) -> ()
 typealias InteractorFailure = (Error) -> ()
@@ -37,7 +38,29 @@ class DataInteractor {
         }) { (error) in
             failure(error)
         }
-        
+    }
+    
+    class func getName(success: InteractorSuccess, failure: InteractorFailure) {
+        let deviceName = UIDevice.current.name
+        let array = deviceName.components(separatedBy: " ")
+        if let name = array.first {
+            success(name)
+        } else {
+            failure(NSError(domain: "Name error", code: -1, userInfo: nil))
+        }
+    }
+    
+    class func getSex(success: InteractorSuccess, failure: InteractorFailure) {
+        DataInteractor.getName(success: { value in
+            let lastChar = value[value.index(before: value.endIndex)]
+            if lastChar == "a" {
+                success("Kobieta")
+            } else {
+                success("Mężczyzna")
+            }
+        }) { error in
+            failure(NSError(domain: "Name error", code: -1, userInfo: nil))
+        }
     }
     
 }
