@@ -91,6 +91,22 @@ class MainTestViewController: UITableViewController {
             self.sexLabel.text = error.localizedDescription
         }
         
+        DataInteractor.getWeatherAdditional(success: { value in
+            self.weatherAdditionalIndicator.stopAnimating()
+            self.weatherAdditionalLabel.text = value
+        }) { error in
+            self.weatherAdditionalIndicator.stopAnimating()
+            self.weatherAdditionalLabel.text = error.localizedDescription
+        }
+        
+        DataInteractor.getWeatherAdvice(success: { value in
+            self.weatherAdviceIndicator.stopAnimating()
+            self.weatherAdviceLabel.text = value
+        }) { error in
+            self.weatherAdviceIndicator.stopAnimating()
+            self.weatherAdviceLabel.text = error.localizedDescription
+        }
+        
     }
     
     private func showIndicators(_ show: Bool) {

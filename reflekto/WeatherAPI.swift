@@ -22,7 +22,7 @@ class WeatherAPI {
         var urlComponents = URLComponents(string: "\(baseUrl)\(apiKey)/\(lon),\(lat)")!
         urlComponents.queryItems = [
             URLQueryItem(name: "lang", value: "pl"),
-            URLQueryItem(name: "units", value: "auto"),
+            URLQueryItem(name: "units", value: "ca"),
             URLQueryItem(name: "exclude", value: "minutely, daily, alerts, flags"),
         ]
         
