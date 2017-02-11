@@ -54,14 +54,30 @@
 		7C64ACFC1E4F14DF00240995 /* reflekto */ = {
 			isa = PBXGroup;
 			children = (
+				7C64AD101E4F153400240995 /* Interactor */,
+				7C64AD0F1E4F152C00240995 /* Interface */,
 				7C64ACFD1E4F14DF00240995 /* AppDelegate.swift */,
-				7C64ACFF1E4F14DF00240995 /* ViewController.swift */,
-				7C64AD011E4F14DF00240995 /* Main.storyboard */,
 				7C64AD041E4F14DF00240995 /* Assets.xcassets */,
 				7C64AD061E4F14DF00240995 /* LaunchScreen.storyboard */,
 				7C64AD091E4F14DF00240995 /* Info.plist */,
 			);
 			path = reflekto;
+			sourceTree = "<group>";
+		};
+		7C64AD0F1E4F152C00240995 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				7C64AD011E4F14DF00240995 /* Main.storyboard */,
+				7C64ACFF1E4F14DF00240995 /* ViewController.swift */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		7C64AD101E4F153400240995 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,8 +112,8 @@
 				TargetAttributes = {
 					7C64ACF91E4F14DF00240995 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5VQHC59Q8V;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = J5AJCLAX66;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -261,11 +277,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5VQHC59Q8V;
+				DEVELOPMENT_TEAM = J5AJCLAX66;
 				INFOPLIST_FILE = reflekto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "23992ba8-69f9-461d-93f3-6587def844ce";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development Provisioning";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,7 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5VQHC59Q8V;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = reflekto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
