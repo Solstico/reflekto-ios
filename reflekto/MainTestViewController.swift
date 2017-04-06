@@ -44,6 +44,8 @@ class MainTestViewController: UITableViewController {
     @IBOutlet weak var travelTimeLabel: UILabel!
     @IBOutlet weak var travelTimeIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var textfield: UITextField!
+    
     let locManager = CLLocationManager()
     let bluetoothService = BluetoothServiceManager()
     var peripheralService: PeripheralBluetoothService?
@@ -166,6 +168,9 @@ class MainTestViewController: UITableViewController {
         refreshData()
     }
     
+    @IBAction func sendTextFromTextfield(_ sender: Any) {
+        peripheralService?.write(string: textfield.text)
+    }
 }
 
 extension MainTestViewController {

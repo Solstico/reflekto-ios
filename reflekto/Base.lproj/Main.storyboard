@@ -13,7 +13,7 @@
         <scene sceneID="5Xd-7p-6ee">
             <objects>
                 <tableViewController id="HJc-rV-E0S" customClass="MainTestViewController" customModule="reflekto" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oHx-8r-wPb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" keyboardDismissMode="onDrag" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oHx-8r-wPb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -394,6 +394,39 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="j2O-B5-KiK">
+                                        <rect key="frame" x="0.0" y="484" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j2O-B5-KiK" id="pdl-fG-v7Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ze-3E-kER">
+                                                    <rect key="frame" x="16" y="6" width="307" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYr-QJ-jT7">
+                                                    <rect key="frame" x="331" y="0.0" width="36" height="44"/>
+                                                    <state key="normal" title="Send"/>
+                                                    <connections>
+                                                        <action selector="sendTextFromTextfield:" destination="HJc-rV-E0S" eventType="touchUpInside" id="dqs-qM-wT8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9Ze-3E-kER" firstAttribute="centerY" secondItem="pdl-fG-v7Z" secondAttribute="centerY" id="2Op-2s-mKW"/>
+                                                <constraint firstItem="9Ze-3E-kER" firstAttribute="leading" secondItem="pdl-fG-v7Z" secondAttribute="leading" constant="16" id="eBt-XI-ygh"/>
+                                                <constraint firstAttribute="trailing" secondItem="iYr-QJ-jT7" secondAttribute="trailing" constant="8" id="eiO-OQ-fZn"/>
+                                                <constraint firstItem="iYr-QJ-jT7" firstAttribute="leading" secondItem="9Ze-3E-kER" secondAttribute="trailing" constant="8" id="jyg-EA-PBH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="iYr-QJ-jT7" secondAttribute="bottom" id="GPo-nh-zAu"/>
+                                            <constraint firstItem="iYr-QJ-jT7" firstAttribute="top" secondItem="j2O-B5-KiK" secondAttribute="top" id="gZS-AO-uzP"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -422,6 +455,7 @@
                         <outlet property="nameLabel" destination="vQ6-Lj-mMu" id="jwg-RT-cT3"/>
                         <outlet property="sexIndicator" destination="1oR-L0-H1y" id="4Jd-Xq-DNl"/>
                         <outlet property="sexLabel" destination="Rx5-kn-PCA" id="2h5-oC-CsO"/>
+                        <outlet property="textfield" destination="9Ze-3E-kER" id="bfU-IO-MLr"/>
                         <outlet property="timeIndicator" destination="fg3-2Z-akZ" id="3Zs-Ls-bff"/>
                         <outlet property="timeLabel" destination="tmA-U7-XHA" id="bhn-sy-Edx"/>
                         <outlet property="travelTimeIndicator" destination="oZl-c3-Hq6" id="HN4-qd-wjK"/>
