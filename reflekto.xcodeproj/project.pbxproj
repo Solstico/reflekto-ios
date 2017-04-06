@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C5A1EB71E96BE7000FE4521 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5A1EB61E96BE7000FE4521 /* BluetoothService.swift */; };
+		7C5A1EB91E96D59C00FE4521 /* PeripheralBluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5A1EB81E96D59C00FE4521 /* PeripheralBluetoothService.swift */; };
 		7C64ACFE1E4F14DF00240995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64ACFD1E4F14DF00240995 /* AppDelegate.swift */; };
 		7C64AD001E4F14DF00240995 /* MainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64ACFF1E4F14DF00240995 /* MainTestViewController.swift */; };
 		7C64AD031E4F14DF00240995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C64AD011E4F14DF00240995 /* Main.storyboard */; };
 		7C64AD051E4F14DF00240995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C64AD041E4F14DF00240995 /* Assets.xcassets */; };
 		7C64AD081E4F14DF00240995 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C64AD061E4F14DF00240995 /* LaunchScreen.storyboard */; };
 		7C64AD121E4F1AA100240995 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AD111E4F1AA100240995 /* DataInteractor.swift */; };
+		7C64AD151E4F28B900240995 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AD141E4F28B900240995 /* WeatherAPI.swift */; };
+		7C64AD171E4F41B800240995 /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AD161E4F41B800240995 /* LocationInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C5A1EB61E96BE7000FE4521 /* BluetoothService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
+		7C5A1EB81E96D59C00FE4521 /* PeripheralBluetoothService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralBluetoothService.swift; sourceTree = "<group>"; };
 		7C64ACFA1E4F14DF00240995 /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C64ACFD1E4F14DF00240995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C64ACFF1E4F14DF00240995 /* MainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTestViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +30,8 @@
 		7C64AD071E4F14DF00240995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C64AD091E4F14DF00240995 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C64AD111E4F1AA100240995 /* DataInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
+		7C64AD141E4F28B900240995 /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		7C64AD161E4F41B800240995 /* LocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C5A1EB51E96BE4B00FE4521 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7C5A1EB61E96BE7000FE4521 /* BluetoothService.swift */,
+				7C5A1EB81E96D59C00FE4521 /* PeripheralBluetoothService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		7C64ACF11E4F14DF00240995 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +73,9 @@
 		7C64ACFC1E4F14DF00240995 /* reflekto */ = {
 			isa = PBXGroup;
 			children = (
+				7C5A1EB51E96BE4B00FE4521 /* Services */,
+				7C64AD181E4F4AEF00240995 /* Extension */,
+				7C64AD131E4F28A700240995 /* API */,
 				7C64AD101E4F153400240995 /* Interactor */,
 				7C64AD0F1E4F152C00240995 /* Interface */,
 				7C64ACFD1E4F14DF00240995 /* AppDelegate.swift */,
@@ -79,8 +99,24 @@
 			isa = PBXGroup;
 			children = (
 				7C64AD111E4F1AA100240995 /* DataInteractor.swift */,
+				7C64AD161E4F41B800240995 /* LocationInteractor.swift */,
 			);
 			name = Interactor;
+			sourceTree = "<group>";
+		};
+		7C64AD131E4F28A700240995 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7C64AD141E4F28B900240995 /* WeatherAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		7C64AD181E4F4AEF00240995 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,7 +151,7 @@
 				TargetAttributes = {
 					7C64ACF91E4F14DF00240995 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J5AJCLAX66;
+						DevelopmentTeam = 24H6N4C77D;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -157,8 +193,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C64AD121E4F1AA100240995 /* DataInteractor.swift in Sources */,
+				7C64AD151E4F28B900240995 /* WeatherAPI.swift in Sources */,
 				7C64AD001E4F14DF00240995 /* MainTestViewController.swift in Sources */,
 				7C64ACFE1E4F14DF00240995 /* AppDelegate.swift in Sources */,
+				7C5A1EB91E96D59C00FE4521 /* PeripheralBluetoothService.swift in Sources */,
+				7C5A1EB71E96BE7000FE4521 /* BluetoothService.swift in Sources */,
+				7C64AD171E4F41B800240995 /* LocationInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,13 +321,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J5AJCLAX66;
+				DEVELOPMENT_TEAM = 24H6N4C77D;
 				INFOPLIST_FILE = reflekto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23992ba8-69f9-461d-93f3-6587def844ce";
-				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development Provisioning";
+				PROVISIONING_PROFILE = "4036f72c-b937-448e-809d-da1debd416b3";
+				PROVISIONING_PROFILE_SPECIFIER = "Development All 2";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -324,6 +364,7 @@
 				7C64AD0E1E4F14DF00240995 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
