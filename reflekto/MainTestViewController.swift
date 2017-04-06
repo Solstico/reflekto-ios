@@ -45,6 +45,8 @@ class MainTestViewController: UITableViewController {
     @IBOutlet weak var travelTimeIndicator: UIActivityIndicatorView!
     
     let locManager = CLLocationManager()
+    let bluetoothService = BluetoothServiceManager()
+    var peripheralService: PeripheralBluetoothService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +58,29 @@ class MainTestViewController: UITableViewController {
         refreshData()
     }
     
+    private func connectToBLEDevice() {
+        let deviceUUID = UUID(uuidString: "5A99E231-EE77-49D8-8B20-1D6BEE302B92")!
+        let servicesUUIDs = [UUID(uuidString: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")!]
+        let characteristicsUUIDs = [UUID(uuidString: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")!]
+        
+        bluetoothService.peripheralConnectionSuccess = { [weak self] peripheral in
+            print("Jestem połączony z peripheralem: \(peripheral)")
+            self?.peripheralService = PeripheralBluetoothService(withPeripheral: peripheral)
+        }
+        
+        bluetoothService.peripheralConnectionFailure = { peripheral, error in
+            print("Błąd łączenia z peripheralem: \(String(describing: peripheral)) \n błąd: \(String(describing: error))")
+        }
+        
+        bluetoothService.peripheralDisconnected = { peripheral, error in
+            print("Rozłączyłem się z peripheralem: \(String(describing: peripheral)) \n błąd: \(String(describing: error))")
+        }
+        
+        bluetoothService.connectToMirror(withUUID: deviceUUID, serviceUUIDs: servicesUUIDs, characteristicsUUIDs: characteristicsUUIDs)
+    }
+    
     private func refreshData() {
+        connectToBLEDevice()
         showIndicators(true)
         
         DataInteractor.getTime(success: { value in
@@ -142,6 +166,39 @@ class MainTestViewController: UITableViewController {
         refreshData()
     }
     
+}
 
+extension MainTestViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            peripheralService?.write(string: timeLabel.text)
+        case 1:
+            peripheralService?.write(string: weatherLabel.text)
+        case 2:
+            peripheralService?.write(string: greetingsLabel.text)
+        case 3:
+            peripheralService?.write(string: nameLabel.text)
+        case 4:
+            peripheralService?.write(string: sexLabel.text)
+        case 5:
+            peripheralService?.write(string: complimentLabel.text)
+        case 6:
+            peripheralService?.write(string: weatherAdditionalLabel.text)
+        case 7:
+            peripheralService?.write(string: weatherAdviceLabel.text)
+        case 8:
+            peripheralService?.write(string: calendarLabel.text)
+        case 9:
+            peripheralService?.write(string: mailLabel.text)
+        case 10:
+            peripheralService?.write(string: travelTimeLabel.text)
+        default:
+            peripheralService?.write(string: "default")
+        }
+    }
+    
 }
 
