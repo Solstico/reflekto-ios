@@ -179,27 +179,27 @@ extension MainTestViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            peripheralService?.write(string: timeLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(timeLabel.text ?? "")")
         case 1:
-            peripheralService?.write(string: weatherLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(weatherLabel.text ?? "")")
         case 2:
-            peripheralService?.write(string: greetingsLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(greetingsLabel.text ?? "")")
         case 3:
-            peripheralService?.write(string: nameLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(nameLabel.text ?? "")")
         case 4:
-            peripheralService?.write(string: sexLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(sexLabel.text ?? "")")
         case 5:
-            peripheralService?.write(string: complimentLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(complimentLabel.text ?? "")")
         case 6:
-            peripheralService?.write(string: weatherAdditionalLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(weatherAdditionalLabel.text ?? "")")
         case 7:
-            peripheralService?.write(string: weatherAdviceLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(weatherAdviceLabel.text ?? "")")
         case 8:
-            peripheralService?.write(string: calendarLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(calendarLabel.text ?? "")")
         case 9:
-            peripheralService?.write(string: mailLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(mailLabel.text ?? "")")
         case 10:
-            peripheralService?.write(string: travelTimeLabel.text)
+            peripheralService?.write(string: "\(indexPath.row)0\(travelTimeLabel.text ?? "")")
         default:
             peripheralService?.write(string: "default")
         }
