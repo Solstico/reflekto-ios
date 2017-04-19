@@ -141,6 +141,24 @@ class MainTestViewController: UITableViewController {
             self.calendarLabel.text = error.localizedDescription
         }
         
+        DataInteractor.getGreeting(success: { value in
+            self.greetingsIndicator.stopAnimating()
+            self.greetingsLabel.text = value
+        }) { error in
+            self.greetingsIndicator.stopAnimating()
+            self.greetingsLabel.text = error.localizedDescription
+        }
+        
+        DataInteractor.getCompliment(success: { value in
+            self.complimentIndicator.stopAnimating()
+            self.complimentLabel.text = value
+        }) { error in
+            self.complimentIndicator.stopAnimating()
+            self.complimentLabel.text = error.localizedDescription
+        }
+        
+        mailIndicator.stopAnimating()
+        travelTimeIndicator.stopAnimating()
     }
     
     private func showIndicators(_ show: Bool) {

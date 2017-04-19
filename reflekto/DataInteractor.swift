@@ -55,9 +55,9 @@ class DataInteractor {
         DataInteractor.getName(success: { value in
             let lastChar = value[value.index(before: value.endIndex)]
             if lastChar == "a" {
-                success("Kobieta")
+                success("Female")
             } else {
-                success("Mężczyzna")
+                success("Male")
             }
         }) { error in
             failure(NSError(domain: "Name error", code: -1, userInfo: nil))
@@ -72,7 +72,7 @@ class DataInteractor {
                     return
                 }
                 let windSpeed = (json["currently"] as! [String: Any])["windSpeed"] as! Int
-                success("Wiatr: \(windSpeed) km/h")
+                success("Wind: \(windSpeed) km/h")
                 
             }) { error in
                 failure(error)
@@ -114,6 +114,37 @@ class DataInteractor {
         dateFormatter.timeStyle = .short
         
         success("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+    }
+    
+    class func getGreeting(success: InteractorSuccess, failure: InteractorFailure) {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 4...12:
+            success("Good morning")
+        case 13...18:
+            success("Good afternoon")
+        case 19...21:
+            success("Good evening")
+        case 22...24:
+            success("Good night")
+        case 0...3:
+            success("Good night")
+        default:
+            break
+        }
+    }
+    
+    class func getCompliment(success: InteractorSuccess, failure: InteractorFailure) {
+        let compliments = ["Your smile is contagious", "You look great today",
+                           "You're a smart cookie", "On a scale from 1 to 10, you're an 11",
+                           "You have impeccable manners", "You should be proud of yourself",
+                           "You're like sunshine on a rainy day", "Your hair looks stunning",
+                           "You're gorgeous", "You're amazing",
+        ]
+        let randomNumber = Int(arc4random_uniform(10))
+        success(compliments[randomNumber])
     }
     
 }
