@@ -133,6 +133,14 @@ class MainTestViewController: UITableViewController {
             self.weatherAdviceLabel.text = error.localizedDescription
         }
         
+        DataInteractor.getNextEvent(success: { value in
+            self.calendarIndicator.stopAnimating()
+            self.calendarLabel.text = value
+        }) { error in
+            self.calendarIndicator.stopAnimating()
+            self.calendarLabel.text = error.localizedDescription
+        }
+        
     }
     
     private func showIndicators(_ show: Bool) {

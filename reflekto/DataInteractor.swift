@@ -100,4 +100,20 @@ class DataInteractor {
         }
     }
     
+    class func getNextEvent(success: @escaping InteractorSuccess, failure: @escaping InteractorFailure) {
+        let eventService = EventService()
+        guard let event = eventService.getNextEvent() else {
+            failure(NSError(domain: "EventKit Error", code: -2, userInfo: nil))
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
+        dateFormatter.timeZone = event.timeZone
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        
+        success("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+    }
+    
 }

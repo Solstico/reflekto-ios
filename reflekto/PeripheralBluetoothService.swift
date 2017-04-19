@@ -12,6 +12,8 @@ import CoreBluetooth
 
 class PeripheralBluetoothService: NSObject {
     
+    let MAX_PACKAGE_BYTES = 20
+    
     var peripheral: CBPeripheral!
     
     var characteristic: CBCharacteristic? {
@@ -33,7 +35,13 @@ class PeripheralBluetoothService: NSObject {
     
     private func write(data: Data) {
         guard let characteristic = characteristic else { return }
-        peripheral.writeValue(data, for: characteristic, type: .withResponse)
+        var returnData = data
+        let bytesCount = data.count
+        let different = bytesCount - MAX_PACKAGE_BYTES
+        if different > 0 {
+            returnData = Data(returnData.dropLast(different))
+        }
+        peripheral.writeValue(returnData, for: characteristic, type: .withResponse)
     }
     
 }
