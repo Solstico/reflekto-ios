@@ -57,7 +57,7 @@ extension BluetoothServiceManager: CBCentralManagerDelegate {
     
     //MARK: Discover handlers
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("Discovered \(peripheral) with advertisementData: \(advertisementData)")
+//        print("Discovered \(peripheral) with advertisementData: \(advertisementData)")
         //TODO: ONLY FOR TESTS, CHANGE THAT!!!!
         if let name = peripheral.name, name == "Reflekto_UART" {
             self.peripheral = peripheral
