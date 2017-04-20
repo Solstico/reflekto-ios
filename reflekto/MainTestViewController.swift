@@ -188,7 +188,6 @@ class MainTestViewController: UITableViewController {
         }
     }
     
-    
     //MARK: Actions
     @IBAction func refreshDidTap(_ sender: Any) {
         refreshData()
@@ -196,6 +195,18 @@ class MainTestViewController: UITableViewController {
     
     @IBAction func sendTextFromTextfield(_ sender: Any) {
         peripheralService?.write(string: textfield.text)
+    }
+    
+    @IBAction func sendAllData(_ sender: Any) {
+        peripheralService?.write(string: "00\(timeLabel.text ?? "")")
+        peripheralService?.write(string: "10\(weatherLabel.text ?? "")")
+        peripheralService?.write(string: "20\(greetingsLabel.text ?? "")")
+        peripheralService?.write(string: "30\(nameLabel.text ?? "")")
+        peripheralService?.write(string: "40\(sexLabel.text ?? "")")
+        peripheralService?.write(string: "50\(complimentLabel.text ?? "")")
+        peripheralService?.write(string: "60\(weatherAdditionalLabel.text ?? "")")
+        peripheralService?.write(string: "70\(weatherAdviceLabel.text ?? "")")
+        peripheralService?.write(string: "80\(calendarLabel.text ?? "")")
     }
 }
 
@@ -227,7 +238,7 @@ extension MainTestViewController {
         case 10:
             peripheralService?.write(string: "\(indexPath.row)0\(travelTimeLabel.text ?? "")")
         default:
-            peripheralService?.write(string: "default")
+            break
         }
     }
     
