@@ -64,7 +64,7 @@ extension PeripheralBluetoothService: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         print("Dostałem RSSI: \(RSSI)")
-        if Int(RSSI) > -60 {
+        if Int(RSSI) > -69 {
             rangeDidChangedToNearby?()
         } else {
             bluetoothService?.disconnect(peripheral: peripheral)
