@@ -17,6 +17,7 @@
 		7C64AD121E4F1AA100240995 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AD111E4F1AA100240995 /* DataInteractor.swift */; };
 		7C64AD151E4F28B900240995 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AD141E4F28B900240995 /* WeatherAPI.swift */; };
 		7C64AD171E4F41B800240995 /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AD161E4F41B800240995 /* LocationInteractor.swift */; };
+		7C828AE81EAA7BAA00EE7DA5 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C828AE71EAA7BAA00EE7DA5 /* BackgroundService.swift */; };
 		7C8B1C091EA7E0DA00AFE9C9 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8B1C081EA7E0DA00AFE9C9 /* EventService.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		7C64AD111E4F1AA100240995 /* DataInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
 		7C64AD141E4F28B900240995 /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		7C64AD161E4F41B800240995 /* LocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
+		7C828AE71EAA7BAA00EE7DA5 /* BackgroundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
 		7C8B1C081EA7E0DA00AFE9C9 /* EventService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +55,7 @@
 				7C5A1EB61E96BE7000FE4521 /* BluetoothService.swift */,
 				7C5A1EB81E96D59C00FE4521 /* PeripheralBluetoothService.swift */,
 				7C8B1C081EA7E0DA00AFE9C9 /* EventService.swift */,
+				7C828AE71EAA7BAA00EE7DA5 /* BackgroundService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				7C8B1C091EA7E0DA00AFE9C9 /* EventService.swift in Sources */,
 				7C64AD121E4F1AA100240995 /* DataInteractor.swift in Sources */,
 				7C64AD151E4F28B900240995 /* WeatherAPI.swift in Sources */,
+				7C828AE81EAA7BAA00EE7DA5 /* BackgroundService.swift in Sources */,
 				7C64AD001E4F14DF00240995 /* MainTestViewController.swift in Sources */,
 				7C64ACFE1E4F14DF00240995 /* AppDelegate.swift in Sources */,
 				7C5A1EB91E96D59C00FE4521 /* PeripheralBluetoothService.swift in Sources */,

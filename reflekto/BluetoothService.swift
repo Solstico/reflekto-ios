@@ -33,7 +33,6 @@ class BluetoothServiceManager: NSObject {
         let bluetoothQueue = DispatchQueue(label: "com.solstico.reflekto.bluetooth")
         central = CBCentralManager(delegate: self, queue: bluetoothQueue)
         guard central.state == .poweredOn else {
-            peripheralConnectionFailure?(nil, NSError(domain: "bluetooth", code: BLUETOOTH_NOT_AVAILABLE_CODE, userInfo: nil))
             return
         }
         central.scanForPeripherals(withServices: [cbuuid!], options: nil)
@@ -46,24 +45,17 @@ extension BluetoothServiceManager: CBCentralManagerDelegate {
     //MARK: Bluetooth state handlers
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         guard central.state == .poweredOn else {
-            peripheralConnectionFailure?(nil, NSError(domain: "bluetooth", code: BLUETOOTH_NOT_AVAILABLE_CODE, userInfo: nil))
             return
         }
-//        guard let cbuuid = self.cbuuid else { return }
-        //TODO: ONLY FOR TESTS, CHANGE THAT!!!!
-//        central.scanForPeripherals(withServices: [cbuuid], options: nil)
-        central.scanForPeripherals(withServices: nil, options: nil)
+        guard let cbuuid = self.cbuuid else { return }
+        central.scanForPeripherals(withServices: [cbuuid], options: nil)
     }
     
     //MARK: Discover handlers
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-//        print("Discovered \(peripheral) with advertisementData: \(advertisementData)")
-        //TODO: ONLY FOR TESTS, CHANGE THAT!!!!
-        if let name = peripheral.name, name == "Reflekto_UART" {
-            self.peripheral = peripheral
-            central.stopScan()
-            central.connect(peripheral, options: nil)
-        }
+        self.peripheral = peripheral
+        central.stopScan()
+        central.connect(peripheral, options: nil)
     }
     
     
