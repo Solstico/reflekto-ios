@@ -19,6 +19,7 @@ class BluetoothServiceManager: NSObject {
     fileprivate var cbuuid: CBUUID?
     fileprivate var serviceCBUUIDs: [CBUUID]?
     fileprivate var characteristicsCBUUIDs: [CBUUID]?
+    fileprivate var timer: Timer!
     
     var peripheralConnectionSuccess: ((_ peripheral: CBPeripheral) -> (Void))?
     var peripheralConnectionFailure: ((_ peripheral: CBPeripheral?, _ error: Error?) -> (Void))?
@@ -39,6 +40,7 @@ class BluetoothServiceManager: NSObject {
     }
     
     func disconnect(peripheral: CBPeripheral) {
+        print("I'm trying to disconnect")
         central.cancelPeripheralConnection(peripheral)
     }
     
@@ -79,10 +81,15 @@ extension BluetoothServiceManager: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("I'm disconnected")
         DispatchQueue.main.async {
             self.peripheralDisconnected?(peripheral, error)
         }
-        central.scanForPeripherals(withServices: [cbuuid!], options: nil)
+        timer = Timer.init(timeInterval: 3.0, repeats: false) { _ in
+            print("I'm starting scanning again")
+            self.central.scanForPeripherals(withServices: [self.cbuuid!], options: nil)
+        }
+        RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
     }
     
 }

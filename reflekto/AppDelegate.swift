@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         bluetoothService.peripheralConnectionSuccess = { [weak self] peripheral in
             guard let strongSelf = self else { return }
-            print("Jestem połączony z peripheralem: \(peripheral)")
+            print("Jestem połączony z peripheralem")
             strongSelf.peripheralService = PeripheralBluetoothService(withPeripheral: peripheral)
             strongSelf.peripheralService?.bluetoothService = strongSelf.bluetoothService
             strongSelf.peripheralService?.rangeDidChangedToNearby = {
@@ -70,11 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         bluetoothService.peripheralConnectionFailure = { peripheral, error in
-            print("Błąd łączenia z peripheralem: \(String(describing: peripheral)) \n błąd: \(String(describing: error))")
+            
         }
         
         bluetoothService.peripheralDisconnected = { peripheral, error in
-            print("Rozłączyłem się z peripheralem: \(String(describing: peripheral)) \n błąd: \(String(describing: error))")
+            
         }
         
         bluetoothService.connectToMirror(withUUID: deviceUUID, serviceUUIDs: servicesUUIDs, characteristicsUUIDs: characteristicsUUIDs)

@@ -58,7 +58,9 @@ extension PeripheralBluetoothService: CBPeripheralDelegate {
         writtenData += 1
         if writtenData >= BackgroundService.dataNeededToDownload {
             writtenData = 0
-            bluetoothService?.disconnect(peripheral: peripheral)
+            print("A teraz mnie wypierdol")
+            write(string: "11")
+//            bluetoothService?.disconnect(peripheral: peripheral)
         }
     }
     
@@ -67,7 +69,8 @@ extension PeripheralBluetoothService: CBPeripheralDelegate {
         if Int(RSSI) > -69 {
             rangeDidChangedToNearby?()
         } else {
-            bluetoothService?.disconnect(peripheral: peripheral)
+            write(string: "11")
+//            bluetoothService?.disconnect(peripheral: peripheral)
         }
     }
     
