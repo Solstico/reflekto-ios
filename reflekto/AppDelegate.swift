@@ -64,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Jestem połączony z peripheralem: \(peripheral)")
             strongSelf.peripheralService = PeripheralBluetoothService(withPeripheral: peripheral)
             strongSelf.peripheralService?.bluetoothService = strongSelf.bluetoothService
-            strongSelf.backgroundService.prepareAllData()
+            strongSelf.peripheralService?.rangeDidChangedToNearby = {
+                self?.backgroundService.prepareAllData()
+            }
         }
         
         bluetoothService.peripheralConnectionFailure = { peripheral, error in

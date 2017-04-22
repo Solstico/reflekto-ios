@@ -14,6 +14,7 @@ class PeripheralBluetoothService: NSObject {
     
     var bluetoothService: BluetoothServiceManager?
     var writtenData = 0
+    var rangeDidChangedToNearby: (() -> (Void))?
     
     let MAX_PACKAGE_BYTES = 20
     
@@ -27,6 +28,7 @@ class PeripheralBluetoothService: NSObject {
         super.init()
         self.peripheral = peripheral
         peripheral.delegate = self
+        peripheral.readRSSI()
     }
     
     func write(string: String?) {
@@ -56,6 +58,15 @@ extension PeripheralBluetoothService: CBPeripheralDelegate {
         writtenData += 1
         if writtenData >= BackgroundService.dataNeededToDownload {
             writtenData = 0
+            bluetoothService?.disconnect(peripheral: peripheral)
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+        print("Dostałem RSSI: \(RSSI)")
+        if Int(RSSI) > -60 {
+            rangeDidChangedToNearby?()
+        } else {
             bluetoothService?.disconnect(peripheral: peripheral)
         }
     }
