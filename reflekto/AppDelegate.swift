@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let strongSelf = self else { return }
             print("Jestem połączony z peripheralem: \(peripheral)")
             strongSelf.peripheralService = PeripheralBluetoothService(withPeripheral: peripheral)
+            strongSelf.peripheralService?.bluetoothService = strongSelf.bluetoothService
             strongSelf.backgroundService.prepareAllData()
         }
         
@@ -80,12 +81,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func sendAllData() {
         peripheralService?.write(string: "00\(backgroundService.time ?? "")")
         peripheralService?.write(string: "10\(backgroundService.weather ?? "")")
+        peripheralService?.write(string: "60\(backgroundService.weatherAdditional ?? "")")
+        peripheralService?.write(string: "70\(backgroundService.weatherAdvice ?? "")")
         peripheralService?.write(string: "20\(backgroundService.greeting ?? "")")
         peripheralService?.write(string: "30\(backgroundService.name ?? "")")
         peripheralService?.write(string: "40\(backgroundService.sex ?? "")")
         peripheralService?.write(string: "50\(backgroundService.compliment ?? "")")
-        peripheralService?.write(string: "60\(backgroundService.weatherAdditional ?? "")")
-        peripheralService?.write(string: "70\(backgroundService.weatherAdvice ?? "")")
         peripheralService?.write(string: "80\(backgroundService.nextEvent ?? "")")
     }
 

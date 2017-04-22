@@ -20,7 +20,7 @@ class BackgroundService {
     var greeting: String?
     var compliment: String?
     
-    let dataNeededToDownload = 9
+    static let dataNeededToDownload = 9
     var downloadedData = 0
     var dataPrepared: (() -> (Void))?
     
@@ -110,7 +110,7 @@ class BackgroundService {
     }
     
     private func invalidateDownloadedEleements() {
-        if downloadedData == dataNeededToDownload {
+        if downloadedData == BackgroundService.dataNeededToDownload {
             print("All required data downloaded")
             dataPrepared?()
         }

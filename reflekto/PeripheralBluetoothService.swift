@@ -12,6 +12,9 @@ import CoreBluetooth
 
 class PeripheralBluetoothService: NSObject {
     
+    var bluetoothService: BluetoothServiceManager?
+    var writtenData = 0
+    
     let MAX_PACKAGE_BYTES = 20
     
     var peripheral: CBPeripheral!
@@ -50,6 +53,11 @@ extension PeripheralBluetoothService: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         print("Data was written")
+        writtenData += 1
+        if writtenData >= BackgroundService.dataNeededToDownload {
+            writtenData = 0
+            bluetoothService?.disconnect(peripheral: peripheral)
+        }
     }
     
 }

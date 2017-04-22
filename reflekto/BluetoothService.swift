@@ -38,6 +38,10 @@ class BluetoothServiceManager: NSObject {
         central.scanForPeripherals(withServices: [cbuuid!], options: nil)
     }
     
+    func disconnect(peripheral: CBPeripheral) {
+        central.cancelPeripheralConnection(peripheral)
+    }
+    
 }
 
 extension BluetoothServiceManager: CBCentralManagerDelegate {
@@ -48,7 +52,9 @@ extension BluetoothServiceManager: CBCentralManagerDelegate {
             return
         }
         guard let cbuuid = self.cbuuid else { return }
+//        cbuuid = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
         central.scanForPeripherals(withServices: [cbuuid], options: nil)
+        print("run scanner")
     }
     
     //MARK: Discover handlers
@@ -62,7 +68,6 @@ extension BluetoothServiceManager: CBCentralManagerDelegate {
     
     //MARK: Connection handlers
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("Connected to  \(peripheral)")
         peripheral.delegate = self
         peripheral.discoverServices(serviceCBUUIDs)
     }
@@ -77,6 +82,7 @@ extension BluetoothServiceManager: CBCentralManagerDelegate {
         DispatchQueue.main.async {
             self.peripheralDisconnected?(peripheral, error)
         }
+        central.scanForPeripherals(withServices: [cbuuid!], options: nil)
     }
     
 }
