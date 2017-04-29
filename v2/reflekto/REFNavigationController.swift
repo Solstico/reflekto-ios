@@ -12,15 +12,6 @@ class REFNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarAppearance()
-    }
-    
-    //MARK: View setup methods
-    private func setupNavigationBarAppearance() {
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.backgroundColor = UIColor.clear
-        navigationBar.tintColor = .white
     }
     
     //MARK: Instantiate helpers

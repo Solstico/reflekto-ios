@@ -17,6 +17,9 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
     
+    
+    //Adobe Color palette: https://color.adobe.com/pl/iOS-a-color-theme-8204966/
+    
     class var refRed: UIColor {
         return UIColor(hex: 0xFF3B30)
     }
