@@ -10,6 +10,6 @@ import UIKit
 
 class Defaults {
     
-    static let tableRowHeight: CGFloat = 70.0
+    static let mapScaleDistace: Double = 900
     
 }

@@ -18,7 +18,7 @@ class SetupWorkLocationViewController: SetupViewController {
         Configuration.workLocation.asObservable()
             .subscribe(onNext: { [unowned self] (longitude, latitude) in
                 if longitude != 0 && latitude != 0 {
-                    let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(latitude, longitude), 900, 900)
+                    let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(latitude, longitude), Defaults.mapScaleDistace, Defaults.mapScaleDistace)
                     self.mapView.region = region
                 } else {
                     self.mapView.userTrackingMode = .follow
