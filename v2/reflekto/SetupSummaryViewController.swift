@@ -21,7 +21,7 @@ class SetupSummaryViewController: SetupViewController {
     }
     
     private func navigateToDashboard() {
-        print("The end")
+        navigationController?.presentModallyNavigationVCWithViewController(withVCType: DashboardViewController.self, animated: true, popCurrentFromStack: true)
     }
 
 }

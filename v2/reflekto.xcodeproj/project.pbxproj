@@ -26,6 +26,8 @@
 		7C6BEBB01EB50A8A009D97C8 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */; };
 		7C6BEBB41EB50EE6009D97C8 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBB21EB50EE6009D97C8 /* CLLocationManager+Rx.swift */; };
 		7C6BEBB51EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBB31EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift */; };
+		7C6BEBBA1EB53B7C009D97C8 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */; };
+		7C6BEBBC1EB53CB0009D97C8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -54,6 +56,8 @@
 		7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7C6BEBB21EB50EE6009D97C8 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
 		7C6BEBB31EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
+		7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		7C617EC71EB4DAF500A35886 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				7C6BEBB61EB53B56009D97C8 /* Main */,
 				7C617EDD1EB4DF5100A35886 /* Setup */,
 			);
 			name = Interface;
@@ -185,6 +190,15 @@
 				7C6BEBB31EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift */,
 			);
 			name = rx;
+			sourceTree = "<group>";
+		};
+		7C6BEBB61EB53B56009D97C8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */,
+				7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		7CF502D61EB4D5910039D38D = {
@@ -303,6 +317,7 @@
 				7CF502ED1EB4D5910039D38D /* LaunchScreen.storyboard in Resources */,
 				7CF502EA1EB4D5910039D38D /* Assets.xcassets in Resources */,
 				7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */,
+				7C6BEBBA1EB53B7C009D97C8 /* Dashboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C617EE71EB4F7E500A35886 /* SetupSexViewController.swift in Sources */,
+				7C6BEBBC1EB53CB0009D97C8 /* DashboardViewController.swift in Sources */,
 				7C617EDF1EB4DF7F00A35886 /* SetupViewController.swift in Sources */,
 				7C617EEB1EB500A600A35886 /* SetupHomeLocationViewController.swift in Sources */,
 				7C6BEBB51EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift in Sources */,

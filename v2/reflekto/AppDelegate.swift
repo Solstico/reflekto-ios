@@ -8,7 +8,7 @@
 
 import UIKit
 
-let DEBUG = true
+let DEBUG = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,10 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     fileprivate func configureInitApplicationScreen() {
-        if DEBUG {
-            navigationController = REFNavigationController(rootViewController: SetupAccessViewController.instantiate()!)
+        if Configuration.hasEverything {
+            navigationController = REFNavigationController(rootViewController: DashboardViewController.instantiate()!)
         } else {
             navigationController = REFNavigationController(rootViewController: SetupInfoViewController.instantiate()!)
+        }
+        
+        if DEBUG {
+            navigationController = REFNavigationController(rootViewController: SetupAccessViewController.instantiate()!)
         }
         window?.replaceRootViewControllerWith(navigationController, animated: true)
     }
