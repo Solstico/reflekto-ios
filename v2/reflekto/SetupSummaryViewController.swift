@@ -17,7 +17,7 @@ class SetupSummaryViewController: SetupViewController {
             .subscribe(onNext: { [unowned self] in
                 self.navigateToDashboard()
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
     }
     
     private func navigateToDashboard() {

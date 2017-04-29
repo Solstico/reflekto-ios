@@ -17,7 +17,7 @@ class SetupHomeLocationViewController: SetupViewController {
             .subscribe(onNext: { [unowned self] in
                 self.navigateToNextVC()
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
     }
     
     private func navigateToNextVC() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let DEBUG = false
+let DEBUG = true
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

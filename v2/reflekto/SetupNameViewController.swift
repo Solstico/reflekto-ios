@@ -18,14 +18,14 @@ class SetupNameViewController: SetupViewController {
         
         Configuration.name.asObservable()
             .bind(to: nameTextField.rx.text)
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
         
         nextButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 Configuration.set(name: self.nameTextField.text ?? "")
                 self.navigateToNextVC()
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
     }
     
     private func navigateToNextVC() {
