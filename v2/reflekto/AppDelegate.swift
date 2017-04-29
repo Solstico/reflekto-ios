@@ -8,14 +8,19 @@
 
 import UIKit
 
+let DEBUG = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationController: REFNavigationController!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        configureInitApplicationScreen()
+        
         return true
     }
 
@@ -42,5 +47,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate {
+    
+    fileprivate func configureInitApplicationScreen() {
+        if DEBUG {
+            navigationController = REFNavigationController(rootViewController: SetupInfoViewController.instantiate()!)
+        } else {
+            navigationController = REFNavigationController(rootViewController: SetupInfoViewController.instantiate()!)
+        }
+        window?.replaceRootViewControllerWith(navigationController, animated: true)
+    }
+    
+}
+
+//MARK: Helepers for replacing root view controller with animation
+extension UIWindow {
+    func replaceRootViewControllerWith(_ replacementController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+        let snapshotImageView = UIImageView(image: self.snapshot())
+        self.addSubview(snapshotImageView)
+        
+        let dismissCompletion = { () -> Void in // dismiss all modal view controllers
+            self.rootViewController = replacementController
+            self.bringSubview(toFront: snapshotImageView)
+            if animated {
+                UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                    snapshotImageView.alpha = 0
+                }, completion: { (success) -> Void in
+                    snapshotImageView.removeFromSuperview()
+                    completion?()
+                })
+            }
+            else {
+                snapshotImageView.removeFromSuperview()
+                completion?()
+            }
+        }
+        if self.rootViewController!.presentedViewController != nil {
+            self.rootViewController!.dismiss(animated: false, completion: dismissCompletion)
+        }
+        else {
+            dismissCompletion()
+        }
+    }
+}
+
+extension UIView {
+    func snapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result!
+    }
 }
 
