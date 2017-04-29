@@ -38,6 +38,8 @@ class SetupAccessViewController: SetupViewController {
         Observable.combineLatest(calendarAccess.asObservable(), locationManager.rx.didChangeAuthorizationStatus)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (calendarAccess, locationStatus) in
+                self.locationButton.isEnabled = locationStatus != .authorizedWhenInUse
+                self.calendarButton.isEnabled = !calendarAccess
                 if calendarAccess && locationStatus == .authorizedWhenInUse {
                     self.navigateToNextVC()
                 }
@@ -51,7 +53,7 @@ class SetupAccessViewController: SetupViewController {
     }
     
     private func navigateToNextVC() {
-        navigationController?.navigateToViewController(withType: SetupHomeLocationViewController.self, popCurrentFromStack: false)
+        navigationController?.navigateToViewController(withType: SetupHomeLocationViewController.self, popCurrentFromStack: true)
     }
     
 }
