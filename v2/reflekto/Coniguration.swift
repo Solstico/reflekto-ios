@@ -25,6 +25,22 @@ class Configuration {
         return nameValidation && sexValidation && homeLocationValidation && workLocationValidation
     }
     
+    class func set(name: String) {
+        nameConfiguration = name
+    }
+    
+    class func set(sex: Sex) {
+        sexConfiguration = sex
+    }
+    
+    class func set(homeLocation: Location) {
+        homeLocationConfiguration = homeLocation
+    }
+    
+    class func set(workLocation: Location) {
+        workLocationConfiguration = workLocation
+    }
+    
     class private var nameConfiguration: String {
         set {
             UserDefaults.standard.set(newValue, forKey: "name")
