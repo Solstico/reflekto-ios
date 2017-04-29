@@ -73,9 +73,9 @@ class BaseViewController: UIViewController {
     func keyboardWillHide() {}
     
     //MARK: Popup helpers
-    func showAlert(withMessage message: String?, title: String? = "", buttonTitle: Strings = .ok, onTap: ((Void) -> Void)? = nil) {
+    func showAlert(withMessage message: String?, title: String? = "", buttonTitle: String? = "OK", onTap: ((Void) -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: buttonTitle.localized, style: .default, handler: { alertAction in
+        let OKAction = UIAlertAction(title: buttonTitle, style: .default, handler: { alertAction in
             onTap?()
         })
         alertController.addAction(OKAction)

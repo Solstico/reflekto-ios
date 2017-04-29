@@ -8,14 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EC91EB4DB6D00A35886 /* REFNavigationController.swift */; };
-		7C617ED11EB4DBF300A35886 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ECC1EB4DBF300A35886 /* StringExtension.swift */; };
 		7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ECD1EB4DBF300A35886 /* UIColorExtension.swift */; };
-		7C617ED31EB4DBF300A35886 /* RawRepresentableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ECE1EB4DBF300A35886 /* RawRepresentableExtension.swift */; };
 		7C617ED41EB4DBF300A35886 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ECF1EB4DBF300A35886 /* NSObjectExtension.swift */; };
 		7C617ED51EB4DBF300A35886 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ED01EB4DBF300A35886 /* UITableViewExtension.swift */; };
 		7C617ED81EB4DC7400A35886 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ED61EB4DC7400A35886 /* Defaults.swift */; };
-		7C617ED91EB4DC7400A35886 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ED71EB4DC7400A35886 /* Strings.swift */; };
-		7C617EDB1EB4DC8E00A35886 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C617EDA1EB4DC8E00A35886 /* Localizable.strings */; };
 		7C617EDF1EB4DF7F00A35886 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EDE1EB4DF7F00A35886 /* SetupViewController.swift */; };
 		7C617EE31EB4E2AB00A35886 /* SetupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EE21EB4E2AB00A35886 /* SetupInfoViewController.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
@@ -28,14 +24,10 @@
 
 /* Begin PBXFileReference section */
 		7C617EC91EB4DB6D00A35886 /* REFNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REFNavigationController.swift; sourceTree = "<group>"; };
-		7C617ECC1EB4DBF300A35886 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7C617ECD1EB4DBF300A35886 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		7C617ECE1EB4DBF300A35886 /* RawRepresentableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentableExtension.swift; sourceTree = "<group>"; };
 		7C617ECF1EB4DBF300A35886 /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		7C617ED01EB4DBF300A35886 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		7C617ED61EB4DC7400A35886 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		7C617ED71EB4DC7400A35886 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		7C617EDA1EB4DC8E00A35886 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7C617EDE1EB4DF7F00A35886 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		7C617EE21EB4E2AB00A35886 /* SetupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupInfoViewController.swift; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,8 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				7C617ED61EB4DC7400A35886 /* Defaults.swift */,
-				7C617ED71EB4DC7400A35886 /* Strings.swift */,
-				7C617EDA1EB4DC8E00A35886 /* Localizable.strings */,
 				7CF502E91EB4D5910039D38D /* Assets.xcassets */,
 				7CF502EB1EB4D5910039D38D /* LaunchScreen.storyboard */,
 				7CF502EE1EB4D5910039D38D /* Info.plist */,
@@ -121,9 +111,7 @@
 		7C617ECB1EB4DBCC00A35886 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7C617ECC1EB4DBF300A35886 /* StringExtension.swift */,
 				7C617ECD1EB4DBF300A35886 /* UIColorExtension.swift */,
-				7C617ECE1EB4DBF300A35886 /* RawRepresentableExtension.swift */,
 				7C617ECF1EB4DBF300A35886 /* NSObjectExtension.swift */,
 				7C617ED01EB4DBF300A35886 /* UITableViewExtension.swift */,
 			);
@@ -257,7 +245,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF502ED1EB4D5910039D38D /* LaunchScreen.storyboard in Resources */,
-				7C617EDB1EB4DC8E00A35886 /* Localizable.strings in Resources */,
 				7CF502EA1EB4D5910039D38D /* Assets.xcassets in Resources */,
 				7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */,
 			);
@@ -321,10 +308,7 @@
 				7C617EDF1EB4DF7F00A35886 /* SetupViewController.swift in Sources */,
 				7C617ED81EB4DC7400A35886 /* Defaults.swift in Sources */,
 				7C617ED41EB4DBF300A35886 /* NSObjectExtension.swift in Sources */,
-				7C617ED91EB4DC7400A35886 /* Strings.swift in Sources */,
 				7C617EE31EB4E2AB00A35886 /* SetupInfoViewController.swift in Sources */,
-				7C617ED11EB4DBF300A35886 /* StringExtension.swift in Sources */,
-				7C617ED31EB4DBF300A35886 /* RawRepresentableExtension.swift in Sources */,
 				7C617ED51EB4DBF300A35886 /* UITableViewExtension.swift in Sources */,
 				7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */,
 				7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */,
