@@ -23,6 +23,7 @@
 		7C617EF11EB5035100A35886 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C617EF01EB5035100A35886 /* MapKit.framework */; };
 		7C6BEBAB1EB506F1009D97C8 /* Coniguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */; };
 		7C6BEBAE1EB50742009D97C8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAD1EB50742009D97C8 /* Enums.swift */; };
+		7C6BEBB01EB50A8A009D97C8 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -48,6 +49,7 @@
 		7C617EF01EB5035100A35886 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coniguration.swift; sourceTree = "<group>"; };
 		7C6BEBAD1EB50742009D97C8 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7C6BEBAD1EB50742009D97C8 /* Enums.swift */,
+				7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				7C617ED51EB4DBF300A35886 /* UITableViewExtension.swift in Sources */,
 				7C617EE51EB4F50200A35886 /* SetupNameViewController.swift in Sources */,
 				7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */,
+				7C6BEBB01EB50A8A009D97C8 /* Typealiases.swift in Sources */,
 				7C617EED1EB500C400A35886 /* SetupWorkLocationViewController.swift in Sources */,
 				7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */,
 				7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */,
