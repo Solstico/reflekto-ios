@@ -17,8 +17,24 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
     
+    class var refRed: UIColor {
+        return UIColor(hex: 0xFF3B30)
+    }
+    
+    class var refOrange: UIColor {
+        return UIColor(hex: 0xFF9500)
+    }
+    
+    class var refYellow: UIColor {
+        return UIColor(hex: 0xFFCC00)
+    }
+    
     class var refGreen: UIColor {
-        return UIColor(hex: 0x03CB8D)
+        return UIColor(hex: 0x4CD964)
+    }
+    
+    class var refBlue: UIColor {
+        return UIColor(hex: 0x5AC8FA)
     }
     
 }
