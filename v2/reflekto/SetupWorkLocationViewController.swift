@@ -15,13 +15,22 @@ class SetupWorkLocationViewController: SetupViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     override func initializeView() {
-        mapView.userTrackingMode = .follow
+        Configuration.workLocation.asObservable()
+            .subscribe(onNext: { [unowned self] (longitude, latitude) in
+                if longitude != 0 && latitude != 0 {
+                    let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(latitude, longitude), 900, 900)
+                    self.mapView.region = region
+                } else {
+                    self.mapView.userTrackingMode = .follow
+                }
+            })
+        .addDisposableTo(disposeBag)
 
         nextButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 let longitude = self.mapView.centerCoordinate.longitude
                 let latitude = self.mapView.centerCoordinate.latitude
-                Configuration.set(homeLocation: Location(lon: longitude, lat: latitude))
+                Configuration.set(workLocation: Location(lon: longitude, lat: latitude))
                 self.navigateToNextVC()
             })
         .addDisposableTo(disposeBag)

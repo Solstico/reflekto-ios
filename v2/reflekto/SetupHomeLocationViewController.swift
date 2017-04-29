@@ -15,7 +15,16 @@ class SetupHomeLocationViewController: SetupViewController {
     @IBOutlet weak var mapView: MKMapView!
 
     override func initializeView() {
-        mapView.userTrackingMode = .follow
+        Configuration.homeLocation.asObservable()
+            .subscribe(onNext: { [unowned self] (longitude, latitude) in
+                if longitude != 0 && latitude != 0 {
+                    let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(latitude, longitude), 900, 900)
+                    self.mapView.region = region
+                } else {
+                    self.mapView.userTrackingMode = .follow
+                }
+            })
+        .addDisposableTo(disposeBag)
         
         nextButton.rx.tap
             .subscribe(onNext: { [unowned self] in
