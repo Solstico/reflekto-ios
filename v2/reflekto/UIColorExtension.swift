@@ -33,7 +33,7 @@ extension UIColor {
     }
     
     class var refGreen: UIColor {
-        return UIColor(hex: 0x4CD964)
+        return UIColor(red: 11/255, green: 162/255, blue: 1/255, alpha: 1.0)
     }
     
     class var refBlue: UIColor {

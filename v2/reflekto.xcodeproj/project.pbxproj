@@ -14,6 +14,13 @@
 		7C617ED81EB4DC7400A35886 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ED61EB4DC7400A35886 /* Defaults.swift */; };
 		7C617EDF1EB4DF7F00A35886 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EDE1EB4DF7F00A35886 /* SetupViewController.swift */; };
 		7C617EE31EB4E2AB00A35886 /* SetupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EE21EB4E2AB00A35886 /* SetupInfoViewController.swift */; };
+		7C617EE51EB4F50200A35886 /* SetupNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EE41EB4F50200A35886 /* SetupNameViewController.swift */; };
+		7C617EE71EB4F7E500A35886 /* SetupSexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EE61EB4F7E500A35886 /* SetupSexViewController.swift */; };
+		7C617EE91EB4FEC300A35886 /* SetupAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EE81EB4FEC300A35886 /* SetupAccessViewController.swift */; };
+		7C617EEB1EB500A600A35886 /* SetupHomeLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EEA1EB500A600A35886 /* SetupHomeLocationViewController.swift */; };
+		7C617EED1EB500C400A35886 /* SetupWorkLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EEC1EB500C300A35886 /* SetupWorkLocationViewController.swift */; };
+		7C617EEF1EB500D400A35886 /* SetupSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */; };
+		7C617EF11EB5035100A35886 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C617EF01EB5035100A35886 /* MapKit.framework */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -30,6 +37,13 @@
 		7C617ED61EB4DC7400A35886 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		7C617EDE1EB4DF7F00A35886 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		7C617EE21EB4E2AB00A35886 /* SetupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupInfoViewController.swift; sourceTree = "<group>"; };
+		7C617EE41EB4F50200A35886 /* SetupNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupNameViewController.swift; sourceTree = "<group>"; };
+		7C617EE61EB4F7E500A35886 /* SetupSexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSexViewController.swift; sourceTree = "<group>"; };
+		7C617EE81EB4FEC300A35886 /* SetupAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupAccessViewController.swift; sourceTree = "<group>"; };
+		7C617EEA1EB500A600A35886 /* SetupHomeLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupHomeLocationViewController.swift; sourceTree = "<group>"; };
+		7C617EEC1EB500C300A35886 /* SetupWorkLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWorkLocationViewController.swift; sourceTree = "<group>"; };
+		7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSummaryViewController.swift; sourceTree = "<group>"; };
+		7C617EF01EB5035100A35886 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C617EF11EB5035100A35886 /* MapKit.framework in Frameworks */,
 				BF07AA977797182CAA59F938 /* Pods_reflekto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +146,12 @@
 				7CF502E61EB4D5910039D38D /* Setup.storyboard */,
 				7C617EDE1EB4DF7F00A35886 /* SetupViewController.swift */,
 				7C617EE21EB4E2AB00A35886 /* SetupInfoViewController.swift */,
+				7C617EE41EB4F50200A35886 /* SetupNameViewController.swift */,
+				7C617EE61EB4F7E500A35886 /* SetupSexViewController.swift */,
+				7C617EE81EB4FEC300A35886 /* SetupAccessViewController.swift */,
+				7C617EEA1EB500A600A35886 /* SetupHomeLocationViewController.swift */,
+				7C617EEC1EB500C300A35886 /* SetupWorkLocationViewController.swift */,
+				7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */,
 			);
 			name = InitialSetup;
 			sourceTree = "<group>";
@@ -168,6 +189,7 @@
 		F86621F64B7F2C92A0CCE31C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C617EF01EB5035100A35886 /* MapKit.framework */,
 				E0777B49B569BC5F41356B7C /* Pods_reflekto.framework */,
 			);
 			name = Frameworks;
@@ -212,6 +234,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -305,12 +330,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C617EE71EB4F7E500A35886 /* SetupSexViewController.swift in Sources */,
 				7C617EDF1EB4DF7F00A35886 /* SetupViewController.swift in Sources */,
+				7C617EEB1EB500A600A35886 /* SetupHomeLocationViewController.swift in Sources */,
 				7C617ED81EB4DC7400A35886 /* Defaults.swift in Sources */,
 				7C617ED41EB4DBF300A35886 /* NSObjectExtension.swift in Sources */,
+				7C617EEF1EB500D400A35886 /* SetupSummaryViewController.swift in Sources */,
+				7C617EE91EB4FEC300A35886 /* SetupAccessViewController.swift in Sources */,
 				7C617EE31EB4E2AB00A35886 /* SetupInfoViewController.swift in Sources */,
 				7C617ED51EB4DBF300A35886 /* UITableViewExtension.swift in Sources */,
+				7C617EE51EB4F50200A35886 /* SetupNameViewController.swift in Sources */,
 				7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */,
+				7C617EED1EB500C400A35886 /* SetupWorkLocationViewController.swift in Sources */,
 				7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */,
 				7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */,
 				7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */,

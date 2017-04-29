@@ -53,7 +53,7 @@ extension AppDelegate {
     
     fileprivate func configureInitApplicationScreen() {
         if DEBUG {
-            navigationController = REFNavigationController(rootViewController: SetupInfoViewController.instantiate()!)
+            navigationController = REFNavigationController(rootViewController: SetupAccessViewController.instantiate()!)
         } else {
             navigationController = REFNavigationController(rootViewController: SetupInfoViewController.instantiate()!)
         }
