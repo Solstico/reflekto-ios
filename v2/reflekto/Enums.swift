@@ -9,6 +9,7 @@
 import Foundation
 
 enum Sex: Int {
+    case notSet
     case male
     case female
 }

@@ -17,6 +17,14 @@ class Configuration {
     static let homeLocation = Variable<Location>(homeLocationConfiguration)
     static let workLocation = Variable<Location>(workLocationConfiguration)
     
+    class var hasEverything: Bool {
+        let nameValidation = nameConfiguration != ""
+        let sexValidation = sexConfiguration != .notSet
+        let homeLocationValidation = homeLocationConfiguration != Location(lon: 0, lat: 0)
+        let workLocationValidation = workLocationConfiguration != Location(lon: 0, lat: 0)
+        return nameValidation && sexValidation && homeLocationValidation && workLocationValidation
+    }
+    
     class private var nameConfiguration: String {
         set {
             UserDefaults.standard.set(newValue, forKey: "name")

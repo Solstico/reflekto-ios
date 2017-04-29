@@ -117,7 +117,7 @@
 		7C617EC71EB4DAF500A35886 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				7C617EDD1EB4DF5100A35886 /* InitialSetup */,
+				7C617EDD1EB4DF5100A35886 /* Setup */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		7C617EDD1EB4DF5100A35886 /* InitialSetup */ = {
+		7C617EDD1EB4DF5100A35886 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				7CF502E61EB4D5910039D38D /* Setup.storyboard */,
@@ -161,7 +161,7 @@
 				7C617EEC1EB500C300A35886 /* SetupWorkLocationViewController.swift */,
 				7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */,
 			);
-			name = InitialSetup;
+			name = Setup;
 			sourceTree = "<group>";
 		};
 		7C6BEBAC1EB50738009D97C8 /* Model */ = {
