@@ -21,6 +21,8 @@
 		7C617EED1EB500C400A35886 /* SetupWorkLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EEC1EB500C300A35886 /* SetupWorkLocationViewController.swift */; };
 		7C617EEF1EB500D400A35886 /* SetupSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */; };
 		7C617EF11EB5035100A35886 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C617EF01EB5035100A35886 /* MapKit.framework */; };
+		7C6BEBAB1EB506F1009D97C8 /* Coniguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */; };
+		7C6BEBAE1EB50742009D97C8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAD1EB50742009D97C8 /* Enums.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -44,6 +46,8 @@
 		7C617EEC1EB500C300A35886 /* SetupWorkLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWorkLocationViewController.swift; sourceTree = "<group>"; };
 		7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSummaryViewController.swift; sourceTree = "<group>"; };
 		7C617EF01EB5035100A35886 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coniguration.swift; sourceTree = "<group>"; };
+		7C6BEBAD1EB50742009D97C8 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 		7C617EC41EB4DACA00A35886 /* Commnon */ = {
 			isa = PBXGroup;
 			children = (
+				7C6BEBAC1EB50738009D97C8 /* Model */,
 				7C617EDC1EB4DD2C00A35886 /* Utils */,
 				7C617ECB1EB4DBCC00A35886 /* Extensions */,
 				7C617EC81EB4DB1000A35886 /* Controllers */,
@@ -102,6 +107,7 @@
 		7C617EC61EB4DAEB00A35886 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -154,6 +160,14 @@
 				7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */,
 			);
 			name = InitialSetup;
+			sourceTree = "<group>";
+		};
+		7C6BEBAC1EB50738009D97C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C6BEBAD1EB50742009D97C8 /* Enums.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		7CF502D61EB4D5910039D38D = {
@@ -335,6 +349,7 @@
 				7C617EEB1EB500A600A35886 /* SetupHomeLocationViewController.swift in Sources */,
 				7C617ED81EB4DC7400A35886 /* Defaults.swift in Sources */,
 				7C617ED41EB4DBF300A35886 /* NSObjectExtension.swift in Sources */,
+				7C6BEBAE1EB50742009D97C8 /* Enums.swift in Sources */,
 				7C617EEF1EB500D400A35886 /* SetupSummaryViewController.swift in Sources */,
 				7C617EE91EB4FEC300A35886 /* SetupAccessViewController.swift in Sources */,
 				7C617EE31EB4E2AB00A35886 /* SetupInfoViewController.swift in Sources */,
@@ -345,6 +360,7 @@
 				7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */,
 				7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */,
 				7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */,
+				7C6BEBAB1EB506F1009D97C8 /* Coniguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
