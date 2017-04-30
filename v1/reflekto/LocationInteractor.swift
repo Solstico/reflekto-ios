@@ -19,11 +19,11 @@ class LocationInteractor {
 //        currentLocation = locManager.location
 //        
 //        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(currentLocation) { (placemark, _) in
-            if let city = placemark?.first?.locality {
-                success(currentLocation.coordinate.longitude, currentLocation.coordinate.latitude, city)
-            }
-        }
+//        geocoder.reverseGeocodeLocation(currentLocation) { (placemark, _) in
+//            if let city = placemark?.first?.locality {
+//                success(currentLocation.coordinate.longitude, currentLocation.coordinate.latitude, city)
+//            }
+//        }
         success(19.910636865465353, 50.083879029396861, "Kraków")
     }
     
