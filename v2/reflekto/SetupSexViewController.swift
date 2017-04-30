@@ -17,19 +17,23 @@ class SetupSexViewController: SetupViewController {
     override func initializeView() {
         femaleButton.rx.tap
             .subscribe(onNext: { [unowned self] in
+                Configuration.set(sex: .female)
                 self.navigateToNextVC()
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
+        
         maleButton.rx.tap
             .subscribe(onNext: { [unowned self] in
+                Configuration.set(sex: .male)
                 self.navigateToNextVC()
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
+        
         notSureButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 self.showAlert(withMessage: "This app is not for you", title: "Sorry", buttonTitle: "Ehh, OK ;(")
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
     }
     
     private func navigateToNextVC() {

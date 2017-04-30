@@ -17,11 +17,11 @@ class SetupSummaryViewController: SetupViewController {
             .subscribe(onNext: { [unowned self] in
                 self.navigateToDashboard()
             })
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
     }
     
     private func navigateToDashboard() {
-        print("The end")
+        navigationController?.presentModallyNavigationVCWithViewController(withVCType: DashboardViewController.self, animated: true, popCurrentFromStack: true)
     }
 
 }
