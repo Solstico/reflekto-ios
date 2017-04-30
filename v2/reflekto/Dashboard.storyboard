@@ -4,7 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,12 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWy-96-cER">
-                                <rect key="frame" x="145" y="323" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-8H-nKd">
                                 <rect key="frame" x="16" y="615" width="343" height="40"/>
                                 <constraints>
@@ -40,18 +36,99 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, /{name}" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk0-GI-YFk">
+                                <rect key="frame" x="32" y="40" width="311" height="39.5"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Semibold" family="PingFang HK" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-5f-h8K">
+                                <rect key="frame" x="32" y="286.5" width="311" height="94"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your reflekto status is:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-3l-CiC">
+                                        <rect key="frame" x="65.5" y="0.0" width="180.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xw-Fd-z3b">
+                                        <rect key="frame" x="55.5" y="34" width="200" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not working" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFa-Vx-t9Y">
+                                                <rect key="frame" x="9.5" y="17.5" width="180.5" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.98364526033401489" green="0.064228661358356476" blue="0.018850624561309814" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="oIZ-Zg-55E"/>
+                                            <constraint firstAttribute="height" constant="60" id="onS-fj-fyS"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="tYW-pV-n1c">
+                                <rect key="frame" x="32" y="440.5" width="311" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfP-aN-xNv">
+                                        <rect key="frame" x="0.0" y="0.0" width="130.5" height="40"/>
+                                        <color key="backgroundColor" red="0.91292268037796021" green="0.54712432622909546" blue="0.53454852104187012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PH2-H4-IoI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <color key="tintColor" red="0.064652286469936371" green="0.20600908994674683" blue="0.049508906900882721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Turn off"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfh-NX-Ixq">
+                                        <rect key="frame" x="180.5" y="0.0" width="130.5" height="40"/>
+                                        <color key="backgroundColor" red="0.59440815448760986" green="0.91190993785858154" blue="0.52857697010040283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="nkY-eD-zlD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <color key="tintColor" red="0.064652286469936371" green="0.20600908994674683" blue="0.049508906900882721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Turn on"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GWy-96-cER" firstAttribute="centerX" secondItem="6Xv-Za-gkx" secondAttribute="centerX" id="69M-Ua-xGC"/>
+                            <constraint firstItem="tYW-pV-n1c" firstAttribute="top" secondItem="YMG-5f-h8K" secondAttribute="bottom" constant="60" id="1cf-if-Izc"/>
                             <constraint firstAttribute="trailing" secondItem="oKK-8H-nKd" secondAttribute="trailing" constant="16" id="ICi-tB-KMT"/>
                             <constraint firstItem="oKK-8H-nKd" firstAttribute="leading" secondItem="6Xv-Za-gkx" secondAttribute="leading" constant="16" id="M5l-0U-yzK"/>
-                            <constraint firstItem="GWy-96-cER" firstAttribute="centerY" secondItem="6Xv-Za-gkx" secondAttribute="centerY" id="NnR-XG-eH8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tYW-pV-n1c" secondAttribute="trailing" constant="16" id="RqF-of-fHp"/>
+                            <constraint firstItem="tYW-pV-n1c" firstAttribute="leading" secondItem="6Xv-Za-gkx" secondAttribute="leadingMargin" constant="16" id="Zrc-kY-Zox"/>
+                            <constraint firstItem="YMG-5f-h8K" firstAttribute="leading" secondItem="6Xv-Za-gkx" secondAttribute="leadingMargin" constant="16" id="adv-Jm-iyD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YMG-5f-h8K" secondAttribute="trailing" constant="16" id="fF6-iG-KfX"/>
+                            <constraint firstItem="Xk0-GI-YFk" firstAttribute="leading" secondItem="6Xv-Za-gkx" secondAttribute="leadingMargin" constant="16" id="fbd-fk-zAU"/>
                             <constraint firstItem="OCJ-Bf-lzP" firstAttribute="top" secondItem="oKK-8H-nKd" secondAttribute="bottom" constant="12" id="k8e-Uw-gkz"/>
+                            <constraint firstItem="Xk0-GI-YFk" firstAttribute="top" secondItem="IhY-dD-xvL" secondAttribute="bottom" constant="20" id="rMV-dK-RTf"/>
+                            <constraint firstItem="YMG-5f-h8K" firstAttribute="centerY" secondItem="6Xv-Za-gkx" secondAttribute="centerY" id="tjX-9h-BJx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xk0-GI-YFk" secondAttribute="trailing" constant="16" id="wwh-DA-f5w"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="helloLabel" destination="Xk0-GI-YFk" id="9PI-Lh-f68"/>
                         <outlet property="setupButton" destination="oKK-8H-nKd" id="Zpl-aI-YXM"/>
+                        <outlet property="statusBackground" destination="9xw-Fd-z3b" id="2eh-4i-7Uw"/>
+                        <outlet property="statusText" destination="GFa-Vx-t9Y" id="mJA-lp-cCH"/>
+                        <outlet property="turnOffButton" destination="FfP-aN-xNv" id="8c6-v3-LOw"/>
+                        <outlet property="turnOnButton" destination="Nfh-NX-Ixq" id="Bih-te-JUG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzz-nj-wmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
