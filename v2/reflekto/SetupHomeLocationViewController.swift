@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class SetupHomeLocationViewController: SetupViewController {
 
@@ -31,7 +32,15 @@ class SetupHomeLocationViewController: SetupViewController {
                 let longitude = self.mapView.centerCoordinate.longitude
                 let latitude = self.mapView.centerCoordinate.latitude
                 Configuration.set(homeLocation: Location(lon: longitude, lat: latitude))
-                self.navigateToNextVC()
+                
+                let clLocation = CLLocation(latitude: latitude, longitude: longitude)
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(clLocation) { (placemark, _) in
+                    if let city = placemark?.first?.locality {
+                        Configuration.set(city: city)
+                    }
+                    self.navigateToNextVC()
+                }
             })
         .addDisposableTo(disposeBag)
     }

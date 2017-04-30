@@ -48,6 +48,11 @@ class DashboardViewController: BaseViewController {
                 self.navigateToSetup()
             })
         .addDisposableTo(disposeBag)
+        
+        DataManager.weather.subscribe(onNext: { (value) in
+            print("weather: \(value)")
+        })
+        .addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
