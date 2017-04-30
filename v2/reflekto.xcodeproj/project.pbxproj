@@ -30,7 +30,6 @@
 		7C6BEBBA1EB53B7C009D97C8 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */; };
 		7C6BEBBC1EB53CB0009D97C8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */; };
 		7C6BEBBE1EB5DB77009D97C8 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */; };
-		7CB7C1FE1EB63B1D000360E1 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7C1FD1EB63B1D000360E1 /* EventManager.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -63,7 +62,6 @@
 		7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		7CB7C1FD1EB63B1D000360E1 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 				7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */,
 				7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */,
 				7C69EA671EB62AAE00380D81 /* DataManager.swift */,
-				7CB7C1FD1EB63B1D000360E1 /* EventManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -403,7 +400,6 @@
 				7C6BEBB01EB50A8A009D97C8 /* Typealiases.swift in Sources */,
 				7C6BEBB41EB50EE6009D97C8 /* CLLocationManager+Rx.swift in Sources */,
 				7C617EED1EB500C400A35886 /* SetupWorkLocationViewController.swift in Sources */,
-				7CB7C1FE1EB63B1D000360E1 /* EventManager.swift in Sources */,
 				7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */,
 				7C6BEBBE1EB5DB77009D97C8 /* BluetoothManager.swift in Sources */,
 				7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */,

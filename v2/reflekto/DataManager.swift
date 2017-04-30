@@ -71,8 +71,18 @@ class DataManager {
     }
     
     static let nextEvent: Observable<String> = Observable<String>.create { observer in
-        let eventService = EventManager()
-        guard let event = eventService.getNextEvent() else {
+        let eventStore = EKEventStore()
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.day = +7
+        
+        let endDay = calendar.date(byAdding: dateComponents, to: Date())!
+        let startDay = Date()
+        
+        let predicate = eventStore.predicateForEvents(withStart: startDay, end: endDay, calendars: nil)
+        let events = eventStore.events(matching: predicate)
+        
+        guard let event = events.first else {
             observer.onError(DataManagerError.eventKitError)
             return Disposables.create { }
         }
@@ -84,6 +94,7 @@ class DataManager {
         dateFormatter.timeStyle = .short
         
         observer.onNext("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+        observer.onCompleted()
         return Disposables.create { }
     }
     
