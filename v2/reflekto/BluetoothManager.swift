@@ -13,9 +13,9 @@ import CoreBluetooth
 
 class BluetoothManager: NSObject {
     
+    //change here if services and characteristics count will change in the future
     fileprivate let servicesToDiscoverCount = 1
     fileprivate let characteristicsToDiscoverCount = 1
-    fileprivate var characteristicsDiscoveredCount = 0
     
     fileprivate var manager: CBCentralManager!
     fileprivate var mirrorPeripheral: CBPeripheral!
@@ -33,7 +33,8 @@ class BluetoothManager: NSObject {
     fileprivate var serviceCBUUIDs: [CBUUID]? = [firstServiceCBUUID]
     fileprivate var characteristicsCBUUIDs: [CBUUID]? = [disconnectionCharacteristicCBUUID]
     
-    
+    //helper counters
+    fileprivate var characteristicsDiscoveredCount = 0
     
     override init() {
         super.init()
