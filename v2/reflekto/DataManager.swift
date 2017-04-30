@@ -8,10 +8,13 @@
 
 import Foundation
 import RxSwift
+import UIKit
+import EventKit
 
-enum ApiError: Error {
+enum DataManagerError: Error {
     case jsonError
     case apiError
+    case eventKitError
 }
 
 class DataManager {
@@ -39,7 +42,7 @@ class DataManager {
         let task = session.dataTask(with: urlComponents.url! as URL) { (data, response, error) in
             DispatchQueue.main.async {
                 guard error == nil else {
-                    observer.onError(ApiError.apiError)
+                    observer.onError(DataManagerError.apiError)
                     return
                 }
                 do {
@@ -55,7 +58,7 @@ class DataManager {
                         observer.onNext("\(string1)---\(string2)---\(string3)")
                     }
                 } catch {
-                    observer.onError(ApiError.jsonError)
+                    observer.onError(DataManagerError.jsonError)
                 }
             }
         }
@@ -63,6 +66,23 @@ class DataManager {
         return Disposables.create {
             task.cancel()
         }
+    }
+    
+    static let nextEvent: Observable<String> = Observable<String>.create { observer in
+        let eventService = EventManager()
+        guard let event = eventService.getNextEvent() else {
+            observer.onError(DataManagerError.eventKitError)
+            return Disposables.create { }
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
+        dateFormatter.timeZone = event.timeZone
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        
+        observer.onNext("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+        return Disposables.create { }
     }
     
 }

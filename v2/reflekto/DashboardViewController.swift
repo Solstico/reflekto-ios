@@ -49,7 +49,7 @@ class DashboardViewController: BaseViewController {
             })
         .addDisposableTo(disposeBag)
         
-        DataManager.weather.subscribe(onNext: { (value) in
+        DataManager.nextEvent.subscribe(onNext: { (value) in
             print("weather: \(value)")
         })
         .addDisposableTo(disposeBag)
