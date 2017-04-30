@@ -15,6 +15,7 @@ enum DataManagerError: Error {
     case jsonError
     case apiError
     case eventKitError
+    case wtfError
 }
 
 class DataManager {
@@ -82,6 +83,39 @@ class DataManager {
         dateFormatter.timeStyle = .short
         
         observer.onNext("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+        return Disposables.create { }
+    }
+    
+    static let greeting: Observable<String> = Observable<String>.create { observer in
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 4...12:
+            observer.onNext("Good morning")
+        case 13...18:
+            observer.onNext("Good afternoon")
+        case 19...21:
+            observer.onNext("Good evening")
+        case 22...24:
+            observer.onNext("Good night")
+        case 0...3:
+            observer.onNext("Good night")
+        default:
+            observer.onError(DataManagerError.wtfError)
+        }
+        return Disposables.create { }
+    }
+    
+    static let compliment: Observable<String> = Observable<String>.create { observer in
+        let compliments = ["Your smile is contagious", "You look great today",
+                           "You're a smart cookie", "On a scale from 1 to 10, you're an 11",
+                           "You have impeccable manners", "You should be proud of yourself",
+                           "You're like sunshine on a rainy day", "Your hair looks stunning",
+                           "You're gorgeous", "You're amazing",
+                           ]
+        let randomNumber = Int(arc4random_uniform(10))
+        observer.onNext(compliments[randomNumber])
         return Disposables.create { }
     }
     
