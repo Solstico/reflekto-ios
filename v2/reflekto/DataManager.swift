@@ -57,6 +57,7 @@ class DataManager {
                         let string2 = "Wind: \(windSpeed) km/h"
                         let string3 = "\(summary)"
                         observer.onNext("\(string1)---\(string2)---\(string3)")
+                        observer.onCompleted()
                     }
                 } catch {
                     observer.onError(DataManagerError.jsonError)
@@ -104,6 +105,7 @@ class DataManager {
         default:
             observer.onError(DataManagerError.wtfError)
         }
+        observer.onCompleted()
         return Disposables.create { }
     }
     
@@ -116,6 +118,7 @@ class DataManager {
                            ]
         let randomNumber = Int(arc4random_uniform(10))
         observer.onNext(compliments[randomNumber])
+        observer.onCompleted()
         return Disposables.create { }
     }
     
