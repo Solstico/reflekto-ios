@@ -410,7 +410,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="cb4-bG-06m">
-                                        <rect key="frame" x="16" y="83" width="343" height="437.5"/>
+                                        <rect key="frame" x="16" y="95" width="343" height="414"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gfj-3A-r6Z">
                                                 <rect key="frame" x="2.5" y="0.0" width="338" height="98"/>
@@ -440,16 +440,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gC7-nv-GUi">
-                                                <rect key="frame" x="14.5" y="158" width="314" height="121.5"/>
+                                                <rect key="frame" x="2" y="158" width="339.5" height="98"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I can make even more magic if you will give me permission to access your calendar!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-rl-ZAK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="71.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I can make even more magic, just give me permission to access your calendar!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-rl-ZAK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="339.5" height="48"/>
                                                         <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDD-Ls-dqe">
-                                                        <rect key="frame" x="57" y="81.5" width="200" height="40"/>
+                                                        <rect key="frame" x="69.5" y="58" width="200" height="40"/>
                                                         <color key="backgroundColor" red="0.04176572018" green="0.63678000059999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="d30-5e-11Z"/>
@@ -467,7 +467,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yCI-7M-AEm">
-                                                <rect key="frame" x="8" y="339.5" width="327.5" height="98"/>
+                                                <rect key="frame" x="8" y="316" width="327.5" height="98"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want even more magic? Give me access to your Gmail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D7-xd-YmV">
                                                         <rect key="frame" x="0.0" y="0.0" width="327.5" height="48"/>
