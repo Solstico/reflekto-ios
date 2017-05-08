@@ -8,5 +8,7 @@ target 'reflekto' do
   # Pods for reflekto
   pod 'RxSwift', '~> 3.4'
   pod 'RxCocoa', '~> 3.4'
+  pod 'Google/SignIn'
+  pod 'GoogleAPIClientForREST/Gmail'
 
 end

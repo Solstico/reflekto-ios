@@ -30,6 +30,8 @@
 		7C6BEBBA1EB53B7C009D97C8 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */; };
 		7C6BEBBC1EB53CB0009D97C8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */; };
 		7C6BEBBE1EB5DB77009D97C8 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */; };
+		7CBA966E1EC0EDC00088D4AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CBA966D1EC0EDC00088D4AF /* GoogleService-Info.plist */; };
+		7CBA96701EC0F1AA0088D4AF /* GmailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBA966F1EC0F1AA0088D4AF /* GmailManager.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -62,6 +64,8 @@
 		7C6BEBB91EB53B7C009D97C8 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7C6BEBBB1EB53CB0009D97C8 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		7CBA966D1EC0EDC00088D4AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7CBA966F1EC0F1AA0088D4AF /* GmailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailManager.swift; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				7CF502E91EB4D5910039D38D /* Assets.xcassets */,
 				7CF502EB1EB4D5910039D38D /* LaunchScreen.storyboard */,
 				7CF502EE1EB4D5910039D38D /* Info.plist */,
+				7CBA966D1EC0EDC00088D4AF /* GoogleService-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */,
 				7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */,
 				7C69EA671EB62AAE00380D81 /* DataManager.swift */,
+				7CBA966F1EC0F1AA0088D4AF /* GmailManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			files = (
 				7CF502ED1EB4D5910039D38D /* LaunchScreen.storyboard in Resources */,
 				7CF502EA1EB4D5910039D38D /* Assets.xcassets in Resources */,
+				7CBA966E1EC0EDC00088D4AF /* GoogleService-Info.plist in Resources */,
 				7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */,
 				7C6BEBBA1EB53B7C009D97C8 /* Dashboard.storyboard in Resources */,
 			);
@@ -384,6 +391,7 @@
 			files = (
 				7C617EE71EB4F7E500A35886 /* SetupSexViewController.swift in Sources */,
 				7C6BEBBC1EB53CB0009D97C8 /* DashboardViewController.swift in Sources */,
+				7CBA96701EC0F1AA0088D4AF /* GmailManager.swift in Sources */,
 				7C617EDF1EB4DF7F00A35886 /* SetupViewController.swift in Sources */,
 				7C617EEB1EB500A600A35886 /* SetupHomeLocationViewController.swift in Sources */,
 				7C6BEBB51EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
