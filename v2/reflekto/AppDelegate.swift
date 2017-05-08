@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Google
+import GoogleSignIn
 
 let DEBUG = false
 
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        configureGoogleSignIn()
         configureInitApplicationScreen()
         
         return true
@@ -63,6 +66,23 @@ extension AppDelegate {
             navigationController = REFNavigationController(rootViewController: SetupAccessViewController.instantiate()!)
         }
         window?.replaceRootViewControllerWith(navigationController, animated: true)
+    }
+    
+}
+
+//MARK: Methods for Google SignIn
+extension AppDelegate {
+    
+    fileprivate func configureGoogleSignIn() {
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
+    }
+ 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
+        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
 }
