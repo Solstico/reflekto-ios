@@ -16,13 +16,15 @@ class Configuration {
     static let sex = Variable<Sex>(sexConfiguration)
     static let homeLocation = Variable<Location>(homeLocationConfiguration)
     static let workLocation = Variable<Location>(workLocationConfiguration)
+    static let city = Variable<String>(cityConfiguration)
     
     class var hasEverything: Bool {
         let nameValidation = nameConfiguration != ""
+        let cityValidation = cityConfiguration != ""
         let sexValidation = sexConfiguration != .notSet
         let homeLocationValidation = homeLocationConfiguration != Location(lon: 0, lat: 0)
         let workLocationValidation = workLocationConfiguration != Location(lon: 0, lat: 0)
-        return nameValidation && sexValidation && homeLocationValidation && workLocationValidation
+        return nameValidation && cityValidation && sexValidation && homeLocationValidation && workLocationValidation
     }
     
     class func set(name: String) {
@@ -41,6 +43,10 @@ class Configuration {
         workLocationConfiguration = workLocation
     }
     
+    class func set(city: String) {
+        cityConfiguration = city
+    }
+    
     class private var nameConfiguration: String {
         set {
             UserDefaults.standard.set(newValue, forKey: "name")
@@ -48,6 +54,16 @@ class Configuration {
         }
         get {
             return UserDefaults.standard.string(forKey: "name") ?? ""
+        }
+    }
+    
+    class private var cityConfiguration: String {
+        set {
+            UserDefaults.standard.set(newValue, forKey: "city")
+            city.value = newValue
+        }
+        get {
+            return UserDefaults.standard.string(forKey: "city") ?? ""
         }
     }
     

@@ -130,9 +130,11 @@ extension BluetoothManager: CBPeripheralDelegate {
 extension BluetoothManager {
     
     fileprivate func disconnectInstatly() {
-        let swiftData: [Int8] = [0x0, 0x0, 0x1, 0x2, 0x2, 0x0]
-        let data = Data(bytes: swiftData, count: swiftData.count)
-        mirrorPeripheral.writeValue(data, for: disconnectionCharacteristic, type: .withResponse)
+        if mirrorPeripheral.state == .connected {
+            let swiftData: [Int8] = [0x0, 0x0, 0x1, 0x2, 0x2, 0x0]
+            let data = Data(bytes: swiftData, count: swiftData.count)
+            mirrorPeripheral.writeValue(data, for: disconnectionCharacteristic, type: .withResponse)
+        }
     }
     
 }
