@@ -26,23 +26,23 @@ class BluetoothManager: NSObject {
     fileprivate let bluetoothQueue = DispatchQueue(label: "com.solstico.reflekto.bluetooth")
     
     //services CBUUIDs
-    fileprivate static let advertisementServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
-    fileprivate static let timeServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
-    fileprivate static let weatherServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
-    fileprivate static let personalInfoServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
-    fileprivate static let configurationServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
+    fileprivate static let advertisementServiceCBUUID = CBUUID(string: "74686973-2069-7320-7265-666c656b746f")
+    fileprivate static let timeServiceCBUUID = CBUUID(string: "74681805-2069-7320-7265-666c656b746f")
+    fileprivate static let weatherServiceCBUUID = CBUUID(string: "74680010-2069-7320-7265-666c656b746f")
+    fileprivate static let personalInfoServiceCBUUID = CBUUID(string: "74680020-2069-7320-7265-666c656b746f")
+    fileprivate static let configurationServiceCBUUID = CBUUID(string: "7468DEAD-2069-7320-7265-666c656b746f")
     
     //characteristics CBUUIDs and objects
-    fileprivate static let timeCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let weatherCityCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let weatherWindCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let weatherAdditionalCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let nextEventCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let unreadEmailsCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let travelTimeCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let nameCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let complimentCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate static let configurationCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let timeCharacteristicCBUUID = CBUUID(string: "74682A2B-2069-7320-7265-666c656b746f")
+    fileprivate static let weatherCityCharacteristicCBUUID = CBUUID(string: "74680011-2069-7320-7265-666c656b746f")
+    fileprivate static let weatherWindCharacteristicCBUUID = CBUUID(string: "74680012-2069-7320-7265-666c656b746f")
+    fileprivate static let weatherAdditionalCharacteristicCBUUID = CBUUID(string: "74680013-2069-7320-7265-666c656b746f")
+    fileprivate static let nextEventCharacteristicCBUUID = CBUUID(string: "74680021-2069-7320-7265-666c656b746f")
+    fileprivate static let unreadEmailsCharacteristicCBUUID = CBUUID(string: "74680022-2069-7320-7265-666c656b746f")
+    fileprivate static let travelTimeCharacteristicCBUUID = CBUUID(string: "74680023-2069-7320-7265-666c656b746f")
+    fileprivate static let nameCharacteristicCBUUID = CBUUID(string: "74680024-2069-7320-7265-666c656b746f")
+    fileprivate static let complimentCharacteristicCBUUID = CBUUID(string: "74680025-2069-7320-7265-666c656b746f")
+    fileprivate static let configurationCharacteristicCBUUID = CBUUID(string: "7468BEEF-2069-7320-7265-666c656b746f")
     
     fileprivate var timeCharacteristic: CBCharacteristic!
     fileprivate var weatherCityCharacteristic: CBCharacteristic!
