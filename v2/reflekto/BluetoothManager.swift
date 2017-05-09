@@ -13,6 +13,8 @@ import CoreBluetooth
 
 class BluetoothManager: NSObject {
     
+    fileprivate let MAX_PACKAGE_SIZE = 20 //in bytes
+    
     //change here if services and characteristics count will change in the future
     fileprivate let servicesToDiscoverCount = 1
     fileprivate let characteristicsToDiscoverCount = 1
@@ -156,6 +158,52 @@ extension BluetoothManager {
         }
         //TODO: Do everything here! (mirror is close enough and all characteristics are discovered)
         
+    }
+    
+}
+
+//MARK: Writing data helpers
+extension BluetoothManager {
+    
+    fileprivate func write(string: String?, toCharacteristic characteristic: CBCharacteristic) {
+        guard let string = string else { return }
+        let withoutDiactirics = string.folding(options: .diacriticInsensitive, locale: Locale.current)
+        guard let data = withoutDiactirics.data(using: .utf8) else { return }
+        let dividedData = divideIntoPackages(data)
+        for eachData in dividedData {
+            mirrorPeripheral.writeValue(eachData, for: characteristic, type: .withoutResponse)
+        }
+    }
+    
+    private func divideIntoPackages(_ data: Data) -> [Data] {
+        let startOfTextData = Data(repeating: 0x02, count: 1)
+        let endOfTextData = Data(repeating: 0x03, count: 1)
+        if data.count > MAX_PACKAGE_SIZE {
+            var toReturnDatas = [Data]()
+            var package = Data()
+            for (index, byte) in data.enumerated() {
+                if index == 0 {
+                    package.append(startOfTextData)
+                }
+                if index == data.count - 1 {
+                    package.append(endOfTextData)
+                }
+                
+                if package.count >= MAX_PACKAGE_SIZE || index == data.count - 1 {
+                    toReturnDatas.append(package)
+                    package = Data()
+                } else {
+                    package.append(byte)
+                }
+            }
+            return toReturnDatas
+        } else {
+            var toReturnData = Data()
+            toReturnData.append(startOfTextData)
+            toReturnData.append(data)
+            toReturnData.append(endOfTextData)
+            return [toReturnData]
+        }
     }
     
 }
