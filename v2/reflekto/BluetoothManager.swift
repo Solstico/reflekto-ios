@@ -98,14 +98,14 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("----------- Failed to connect ------------------")
-        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { [unowned self] _ in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
             self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
         }
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("----------- Diconnected from Bluetooth mirror ------------------")
-        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { [unowned self] _ in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
             self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
         }
     }
@@ -174,9 +174,17 @@ extension BluetoothManager: CBPeripheralDelegate {
 //MARK: Write methods
 extension BluetoothManager {
     
-    fileprivate func disconnectInstatly() {
+    fileprivate func initializeConnection() {
         if mirrorPeripheral.state == .connected {
             let swiftData: [Int8] = [0x0, 0x0, 0x1, 0x2, 0x2, 0x0]
+            let data = Data(bytes: swiftData, count: swiftData.count)
+            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
+        }
+    }
+    
+    fileprivate func disconnectInstatly() {
+        if mirrorPeripheral.state == .connected {
+            let swiftData: [Int8] = [0x6, 0x6, 0x6]
             let data = Data(bytes: swiftData, count: swiftData.count)
             mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
         }
@@ -203,6 +211,7 @@ extension BluetoothManager {
     }
     
     private func fetchDataAndWriteToMirror() {
+        initializeConnection()
         Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
             .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, greeting, compliment, unreadMailsCount, travelWorkTime) in
                 print("Timestamp: \(timestamp)")
