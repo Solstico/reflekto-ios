@@ -18,24 +18,47 @@ class BluetoothManager: NSObject {
     fileprivate let MAX_PACKAGE_SIZE = 20 //in bytes
     
     //change here if services and characteristics count will change in the future
-    fileprivate let servicesToDiscoverCount = 1
-    fileprivate let characteristicsToDiscoverCount = 1
+    fileprivate let servicesToDiscoverCount = 4
+    fileprivate let characteristicsToDiscoverCount = 10
     
     fileprivate var manager: CBCentralManager!
     fileprivate var mirrorPeripheral: CBPeripheral!
     fileprivate let bluetoothQueue = DispatchQueue(label: "com.solstico.reflekto.bluetooth")
     
     //services CBUUIDs
-    fileprivate static let firstServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
+    fileprivate static let advertisementServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
+    fileprivate static let timeServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
+    fileprivate static let weatherServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
+    fileprivate static let personalInfoServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
+    fileprivate static let configurationServiceCBUUID = CBUUID(string: "00000700-0000-1000-8000-00805f9b34fb")
     
     //characteristics CBUUIDs and objects
-    fileprivate static let disconnectionCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
-    fileprivate var disconnectionCharacteristic: CBCharacteristic!
+    fileprivate static let timeCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let weatherCityCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let weatherWindCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let weatherAdditionalCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let nextEventCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let unreadEmailsCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let travelTimeCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let nameCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let complimentCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    fileprivate static let configurationCharacteristicCBUUID = CBUUID(string: "00000002-1212-EFDE-1523-785FEF037000")
+    
+    fileprivate var timeCharacteristic: CBCharacteristic!
+    fileprivate var weatherCityCharacteristic: CBCharacteristic!
+    fileprivate var weatherWindCharacteristic: CBCharacteristic!
+    fileprivate var weatherAdditionalCharacteristic: CBCharacteristic!
+    fileprivate var nextEventCharacteristic: CBCharacteristic!
+    fileprivate var unreadEmailsCharacteristic: CBCharacteristic!
+    fileprivate var travelTimeCharacteristic: CBCharacteristic!
+    fileprivate var nameCharacteristic: CBCharacteristic!
+    fileprivate var complimentCharacteristic: CBCharacteristic!
+    fileprivate var configurationCharacteristic: CBCharacteristic!
     
     //CBUUIDS arrays for Core Bluetooth
-    fileprivate var advertisedServicesToDiscover: [CBUUID]? = [firstServiceCBUUID]
-    fileprivate var serviceCBUUIDs: [CBUUID]? = [firstServiceCBUUID]
-    fileprivate var characteristicsCBUUIDs: [CBUUID]? = [disconnectionCharacteristicCBUUID]
+    fileprivate var advertisedServicesToDiscover: [CBUUID]? = [advertisementServiceCBUUID]
+    fileprivate var serviceCBUUIDs: [CBUUID]? = [timeServiceCBUUID, weatherServiceCBUUID, personalInfoServiceCBUUID, configurationServiceCBUUID]
+    fileprivate var characteristicsCBUUIDs: [CBUUID]? = [timeCharacteristicCBUUID, weatherCityCharacteristicCBUUID, weatherWindCharacteristicCBUUID, weatherAdditionalCharacteristicCBUUID, nextEventCharacteristicCBUUID, unreadEmailsCharacteristicCBUUID, travelTimeCharacteristicCBUUID, nameCharacteristicCBUUID, complimentCharacteristicCBUUID, configurationCharacteristicCBUUID]
     
     //helper counters
     fileprivate var characteristicsDiscoveredCount = 0
@@ -113,7 +136,7 @@ extension BluetoothManager: CBPeripheralDelegate {
         for characteristic in characteristics {
             switch characteristic.uuid {
             case BluetoothManager.disconnectionCharacteristicCBUUID:
-                disconnectionCharacteristic = characteristic
+                configurationCharacteristic = characteristic
             default:
                 break
             }
@@ -137,7 +160,7 @@ extension BluetoothManager {
         if mirrorPeripheral.state == .connected {
             let swiftData: [Int8] = [0x0, 0x0, 0x1, 0x2, 0x2, 0x0]
             let data = Data(bytes: swiftData, count: swiftData.count)
-            mirrorPeripheral.writeValue(data, for: disconnectionCharacteristic, type: .withResponse)
+            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
         }
     }
     
