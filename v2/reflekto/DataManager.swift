@@ -20,7 +20,7 @@ enum DataManagerError: Error {
 
 class DataManager {
     
-    static let gmailManager = GmailManager()
+    private static let gmailManager = GmailManager()
     
     static let timestamp: Observable<Int> = Observable<Int>.create { observer in
         let date = Date()
@@ -138,6 +138,7 @@ class DataManager {
     static let unreadMailsCount: Observable<Int> = Observable<Int>.create { observer in
         DataManager.gmailManager.unreadEmailsCountResponse = { unreadEmailsCount in
             observer.onNext(unreadEmailsCount)
+            observer.onCompleted()
         }
         DataManager.gmailManager.getUnreadMails()
         return Disposables.create { }

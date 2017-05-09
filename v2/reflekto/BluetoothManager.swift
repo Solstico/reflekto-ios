@@ -13,6 +13,8 @@ import CoreBluetooth
 
 class BluetoothManager: NSObject {
     
+    let disposeBag = DisposeBag()
+    
     fileprivate let MAX_PACKAGE_SIZE = 20 //in bytes
     
     //change here if services and characteristics count will change in the future
@@ -153,11 +155,25 @@ extension BluetoothManager {
     }
     
     fileprivate func onRangeChagedToNearby() {
-        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { [unowned self] _ in
-            self.disconnectInstatly()
-        }
-        //TODO: Do everything here! (mirror is close enough and all characteristics are discovered)
-        
+//        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { [unowned self] _ in
+//            self.disconnectInstatly()
+//        }
+        fetchDataAndWriteToMirror()
+    }
+    
+    private func fetchDataAndWriteToMirror() {
+        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount)
+            .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, greeting, compliment, unreadMailsCount) in
+                print("Timestamp: \(timestamp)")
+                print("Weather: \(weather)")
+                print("Next Event: \(nextEvent)")
+                print("Greeting: \(greeting)")
+                print("Compliment: \(compliment)")
+                print("Unread mails count: \(unreadMailsCount)")
+                //TODO: Instead of printing, write to characteristics
+                self?.disconnectInstatly()
+            })
+            .addDisposableTo(disposeBag)
     }
     
 }
