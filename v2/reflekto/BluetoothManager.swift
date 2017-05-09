@@ -182,7 +182,7 @@ extension BluetoothManager {
         if mirrorPeripheral.state == .connected {
             let swiftData: [Int8] = [0x0, 0x0, 0x1, 0x2, 0x2, 0x0]
             let data = Data(bytes: swiftData, count: swiftData.count)
-            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
+            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withoutResponse)
         }
     }
     
@@ -190,7 +190,7 @@ extension BluetoothManager {
         if mirrorPeripheral.state == .connected {
             let swiftData: [Int8] = [0x6, 0x6, 0x6]
             let data = Data(bytes: swiftData, count: swiftData.count)
-            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
+            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withoutResponse)
         }
     }
     
@@ -216,8 +216,8 @@ extension BluetoothManager {
     
     private func fetchDataAndWriteToMirror() {
         initializeConnection()
-        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
-            .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, greeting, compliment, unreadMailsCount, travelWorkTime) in
+        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.name, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
+            .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, name, greeting, compliment, unreadMailsCount, travelWorkTime) in
                 guard let strongSelf = self else { return }
                 var timestamp = timestamp
                 print("Timestamp: \(timestamp)")
@@ -232,7 +232,7 @@ extension BluetoothManager {
                 strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherWindCharacteristic)
                 strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherAdditionalCharacteristic)
                 strongSelf.write(string: "Next Event: \(nextEvent)", toCharacteristic: strongSelf.nextEventCharacteristic)
-                strongSelf.write(string: "Name: Michał", toCharacteristic: strongSelf.nameCharacteristic)
+                strongSelf.write(string: "Name: \(name)", toCharacteristic: strongSelf.nameCharacteristic)
                 strongSelf.write(string: "Greeting: \(greeting)", toCharacteristic: strongSelf.greetingCharacteristic)
                 strongSelf.write(string: "Compliment: \(compliment)", toCharacteristic: strongSelf.complimentCharacteristic)
                 strongSelf.write(string: "Unread mails count: \(unreadMailsCount)", toCharacteristic: strongSelf.unreadEmailsCharacteristic)

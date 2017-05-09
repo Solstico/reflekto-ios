@@ -22,7 +22,7 @@
 		7C617EEF1EB500D400A35886 /* SetupSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */; };
 		7C617EF11EB5035100A35886 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C617EF01EB5035100A35886 /* MapKit.framework */; };
 		7C69EA681EB62AAE00380D81 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C69EA671EB62AAE00380D81 /* DataManager.swift */; };
-		7C6BEBAB1EB506F1009D97C8 /* Coniguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */; };
+		7C6BEBAB1EB506F1009D97C8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAA1EB506F1009D97C8 /* Configuration.swift */; };
 		7C6BEBAE1EB50742009D97C8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAD1EB50742009D97C8 /* Enums.swift */; };
 		7C6BEBB01EB50A8A009D97C8 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */; };
 		7C6BEBB41EB50EE6009D97C8 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBB21EB50EE6009D97C8 /* CLLocationManager+Rx.swift */; };
@@ -56,7 +56,7 @@
 		7C617EEE1EB500D400A35886 /* SetupSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSummaryViewController.swift; sourceTree = "<group>"; };
 		7C617EF01EB5035100A35886 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7C69EA671EB62AAE00380D81 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coniguration.swift; sourceTree = "<group>"; };
+		7C6BEBAA1EB506F1009D97C8 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		7C6BEBAD1EB50742009D97C8 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7C6BEBAF1EB50A8A009D97C8 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7C6BEBB21EB50EE6009D97C8 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		7C617EC61EB4DAEB00A35886 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				7C6BEBAA1EB506F1009D97C8 /* Coniguration.swift */,
+				7C6BEBAA1EB506F1009D97C8 /* Configuration.swift */,
 				7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */,
 				7C69EA671EB62AAE00380D81 /* DataManager.swift */,
 				7CBA966F1EC0F1AA0088D4AF /* GmailManager.swift */,
@@ -412,7 +412,7 @@
 				7C6BEBBE1EB5DB77009D97C8 /* BluetoothManager.swift in Sources */,
 				7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */,
 				7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */,
-				7C6BEBAB1EB506F1009D97C8 /* Coniguration.swift in Sources */,
+				7C6BEBAB1EB506F1009D97C8 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

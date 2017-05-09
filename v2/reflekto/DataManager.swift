@@ -101,6 +101,13 @@ class DataManager {
         return Disposables.create { }
     }
     
+    static let name: Observable<String> = Observable<String>.create { observer in
+        let name = Configuration.name.value
+        observer.onNext(name)
+        observer.onCompleted()
+        return Disposables.create { }
+    }
+    
     static let greeting: Observable<String> = Observable<String>.create { observer in
         let date = Date()
         let calendar = Calendar.current
