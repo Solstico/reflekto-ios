@@ -91,9 +91,8 @@ extension BluetoothManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("----------- Connected to Bluetooth mirror ------------------")
         if peripheral == mirrorPeripheral {
-            clearDiscoveredItems()
             mirrorPeripheral.delegate = self
-            mirrorPeripheral.discoverServices(serviceCBUUIDs)
+            mirrorPeripheral.readRSSI()
         }
     }
     
@@ -135,7 +134,25 @@ extension BluetoothManager: CBPeripheralDelegate {
     private func mapCharacteristicsToObjects(_ characteristics: [CBCharacteristic]) {
         for characteristic in characteristics {
             switch characteristic.uuid {
-            case BluetoothManager.disconnectionCharacteristicCBUUID:
+            case BluetoothManager.timeCharacteristicCBUUID:
+                timeCharacteristic = characteristic
+            case BluetoothManager.weatherCityCharacteristicCBUUID:
+                weatherCityCharacteristic = characteristic
+            case BluetoothManager.weatherWindCharacteristicCBUUID:
+                weatherWindCharacteristic = characteristic
+            case BluetoothManager.weatherAdditionalCharacteristicCBUUID:
+                weatherAdditionalCharacteristic = characteristic
+            case BluetoothManager.nextEventCharacteristicCBUUID:
+                nextEventCharacteristic = characteristic
+            case BluetoothManager.unreadEmailsCharacteristicCBUUID:
+                unreadEmailsCharacteristic = characteristic
+            case BluetoothManager.travelTimeCharacteristicCBUUID:
+                travelTimeCharacteristic = characteristic
+            case BluetoothManager.nameCharacteristicCBUUID:
+                nameCharacteristic = characteristic
+            case BluetoothManager.complimentCharacteristicCBUUID:
+                complimentCharacteristic = characteristic
+            case BluetoothManager.configurationServiceCBUUID:
                 configurationCharacteristic = characteristic
             default:
                 break
@@ -145,7 +162,8 @@ extension BluetoothManager: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         if Int(RSSI) > -69 {
-            onRangeChagedToNearby()
+            clearDiscoveredItems()
+            mirrorPeripheral.discoverServices(serviceCBUUIDs)
         } else {
             disconnectInstatly()
         }
@@ -174,7 +192,7 @@ extension BluetoothManager {
     }
     
     fileprivate func onAllCharacteristicsDiscovered() {
-        mirrorPeripheral.readRSSI()
+        onRangeChagedToNearby()
     }
     
     fileprivate func onRangeChagedToNearby() {
