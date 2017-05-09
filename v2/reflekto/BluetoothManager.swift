@@ -15,7 +15,7 @@ class BluetoothManager: NSObject {
     
     let disposeBag = DisposeBag()
     
-    fileprivate let MAX_PACKAGE_SIZE = 20 //in bytes
+    fileprivate let MAX_PACKAGE_SIZE = 19 //in bytes
     
     //change here if services and characteristics count will change in the future
     fileprivate let servicesToDiscoverCount = 4
@@ -60,7 +60,7 @@ class BluetoothManager: NSObject {
     //CBUUIDS arrays for Core Bluetooth
     fileprivate var advertisedServicesToDiscover: [CBUUID]? = [advertisementServiceCBUUID]
     fileprivate var serviceCBUUIDs: [CBUUID]? = [timeServiceCBUUID, weatherServiceCBUUID, personalInfoServiceCBUUID, configurationServiceCBUUID]
-    fileprivate var characteristicsCBUUIDs: [CBUUID]? = [timeCharacteristicCBUUID, weatherCityCharacteristicCBUUID, weatherWindCharacteristicCBUUID, weatherAdditionalCharacteristicCBUUID, nextEventCharacteristicCBUUID, unreadEmailsCharacteristicCBUUID, travelTimeCharacteristicCBUUID, nameCharacteristicCBUUID, complimentCharacteristicCBUUID, configurationCharacteristicCBUUID]
+    fileprivate var characteristicsCBUUIDs: [CBUUID]? = [timeCharacteristicCBUUID, weatherCityCharacteristicCBUUID, weatherWindCharacteristicCBUUID, weatherAdditionalCharacteristicCBUUID, nextEventCharacteristicCBUUID, unreadEmailsCharacteristicCBUUID, travelTimeCharacteristicCBUUID, nameCharacteristicCBUUID, greetingCharacteristicCBUUID, complimentCharacteristicCBUUID, configurationCharacteristicCBUUID]
     
     //helper counters
     fileprivate var characteristicsDiscoveredCount = 0
@@ -107,9 +107,10 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("----------- Diconnected from Bluetooth mirror ------------------")
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
+//        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
             self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
-        }
+//        }
+        
     }
     
 }
@@ -156,9 +157,10 @@ extension BluetoothManager: CBPeripheralDelegate {
                 greetingCharacteristic = characteristic
             case BluetoothManager.complimentCharacteristicCBUUID:
                 complimentCharacteristic = characteristic
-            case BluetoothManager.configurationServiceCBUUID:
+            case BluetoothManager.configurationCharacteristicCBUUID:
                 configurationCharacteristic = characteristic
             default:
+                print("Error whille mapping characteristic: \(characteristic.uuid.uuidString)")
                 break
             }
         }
@@ -169,7 +171,7 @@ extension BluetoothManager: CBPeripheralDelegate {
             clearDiscoveredItems()
             mirrorPeripheral.discoverServices(serviceCBUUIDs)
         } else {
-            disconnectInstatly()
+//            disconnectInstatly()
         }
     }
     
@@ -182,7 +184,7 @@ extension BluetoothManager {
         if mirrorPeripheral.state == .connected {
             let swiftData: [Int8] = [0x0, 0x0, 0x1, 0x2, 0x2, 0x0]
             let data = Data(bytes: swiftData, count: swiftData.count)
-            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withoutResponse)
+            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
         }
     }
     
@@ -190,7 +192,7 @@ extension BluetoothManager {
         if mirrorPeripheral.state == .connected {
             let swiftData: [Int8] = [0x6, 0x6, 0x6]
             let data = Data(bytes: swiftData, count: swiftData.count)
-            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withoutResponse)
+            mirrorPeripheral.writeValue(data, for: configurationCharacteristic, type: .withResponse)
         }
     }
     
@@ -227,7 +229,7 @@ extension BluetoothManager {
                 print("Compliment: \(compliment)")
                 print("Unread mails count: \(unreadMailsCount)")
                 print("Travel time to work: \(travelWorkTime)")
-                strongSelf.mirrorPeripheral.writeValue(Data(bytes: &timestamp, count: 4), for: strongSelf.timeCharacteristic, type: .withoutResponse)
+                strongSelf.mirrorPeripheral.writeValue(Data(bytes: &timestamp, count: 4), for: strongSelf.timeCharacteristic, type: .withResponse)
                 strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherCityCharacteristic)
                 strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherWindCharacteristic)
                 strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherAdditionalCharacteristic)
@@ -253,7 +255,7 @@ extension BluetoothManager {
         guard let data = withoutDiactirics.data(using: .utf8) else { return }
         let dividedData = divideIntoPackages(data)
         for eachData in dividedData {
-            mirrorPeripheral.writeValue(eachData, for: characteristic, type: .withoutResponse)
+            mirrorPeripheral.writeValue(eachData, for: characteristic, type: .withResponse)
         }
     }
     
@@ -268,12 +270,14 @@ extension BluetoothManager {
                     package.append(startOfTextData)
                 }
                 if index == data.count - 1 {
+                    package.append(byte)
                     package.append(endOfTextData)
                 }
                 
                 if package.count >= MAX_PACKAGE_SIZE || index == data.count - 1 {
                     toReturnDatas.append(package)
                     package = Data()
+                    package.append(byte)
                 } else {
                     package.append(byte)
                 }
