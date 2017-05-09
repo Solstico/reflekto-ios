@@ -162,14 +162,15 @@ extension BluetoothManager {
     }
     
     private func fetchDataAndWriteToMirror() {
-        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount)
-            .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, greeting, compliment, unreadMailsCount) in
+        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
+            .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, greeting, compliment, unreadMailsCount, travelWorkTime) in
                 print("Timestamp: \(timestamp)")
                 print("Weather: \(weather)")
                 print("Next Event: \(nextEvent)")
                 print("Greeting: \(greeting)")
                 print("Compliment: \(compliment)")
                 print("Unread mails count: \(unreadMailsCount)")
+                print("Travel time to work: \(travelWorkTime)")
                 //TODO: Instead of printing, write to characteristics
                 self?.disconnectInstatly()
             })
