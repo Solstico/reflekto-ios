@@ -19,7 +19,7 @@ class BluetoothManager: NSObject {
     
     //change here if services and characteristics count will change in the future
     fileprivate let servicesToDiscoverCount = 4
-    fileprivate let characteristicsToDiscoverCount = 10
+    fileprivate let characteristicsToDiscoverCount = 11
     
     fileprivate var manager: CBCentralManager!
     fileprivate var mirrorPeripheral: CBPeripheral!
