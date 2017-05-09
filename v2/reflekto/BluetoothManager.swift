@@ -41,6 +41,7 @@ class BluetoothManager: NSObject {
     fileprivate static let unreadEmailsCharacteristicCBUUID = CBUUID(string: "74680022-2069-7320-7265-666c656b746f")
     fileprivate static let travelTimeCharacteristicCBUUID = CBUUID(string: "74680023-2069-7320-7265-666c656b746f")
     fileprivate static let nameCharacteristicCBUUID = CBUUID(string: "74680024-2069-7320-7265-666c656b746f")
+    fileprivate static let greetingCharacteristicCBUUID = CBUUID(string: "74680026-2069-7320-7265-666c656b746f")
     fileprivate static let complimentCharacteristicCBUUID = CBUUID(string: "74680025-2069-7320-7265-666c656b746f")
     fileprivate static let configurationCharacteristicCBUUID = CBUUID(string: "7468BEEF-2069-7320-7265-666c656b746f")
     
@@ -52,6 +53,7 @@ class BluetoothManager: NSObject {
     fileprivate var unreadEmailsCharacteristic: CBCharacteristic!
     fileprivate var travelTimeCharacteristic: CBCharacteristic!
     fileprivate var nameCharacteristic: CBCharacteristic!
+    fileprivate var greetingCharacteristic: CBCharacteristic!
     fileprivate var complimentCharacteristic: CBCharacteristic!
     fileprivate var configurationCharacteristic: CBCharacteristic!
     
@@ -150,6 +152,8 @@ extension BluetoothManager: CBPeripheralDelegate {
                 travelTimeCharacteristic = characteristic
             case BluetoothManager.nameCharacteristicCBUUID:
                 nameCharacteristic = characteristic
+            case BluetoothManager.greetingCharacteristicCBUUID:
+                greetingCharacteristic = characteristic
             case BluetoothManager.complimentCharacteristicCBUUID:
                 complimentCharacteristic = characteristic
             case BluetoothManager.configurationServiceCBUUID:
@@ -214,6 +218,8 @@ extension BluetoothManager {
         initializeConnection()
         Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
             .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, greeting, compliment, unreadMailsCount, travelWorkTime) in
+                guard let strongSelf = self else { return }
+                var timestamp = timestamp
                 print("Timestamp: \(timestamp)")
                 print("Weather: \(weather)")
                 print("Next Event: \(nextEvent)")
@@ -221,8 +227,17 @@ extension BluetoothManager {
                 print("Compliment: \(compliment)")
                 print("Unread mails count: \(unreadMailsCount)")
                 print("Travel time to work: \(travelWorkTime)")
-                //TODO: Instead of printing, write to characteristics
-                self?.disconnectInstatly()
+                strongSelf.mirrorPeripheral.writeValue(Data(bytes: &timestamp, count: 4), for: strongSelf.timeCharacteristic, type: .withoutResponse)
+                strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherCityCharacteristic)
+                strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherWindCharacteristic)
+                strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherAdditionalCharacteristic)
+                strongSelf.write(string: "Next Event: \(nextEvent)", toCharacteristic: strongSelf.nextEventCharacteristic)
+                strongSelf.write(string: "Name: Michał", toCharacteristic: strongSelf.nameCharacteristic)
+                strongSelf.write(string: "Greeting: \(greeting)", toCharacteristic: strongSelf.greetingCharacteristic)
+                strongSelf.write(string: "Compliment: \(compliment)", toCharacteristic: strongSelf.complimentCharacteristic)
+                strongSelf.write(string: "Unread mails count: \(unreadMailsCount)", toCharacteristic: strongSelf.unreadEmailsCharacteristic)
+                strongSelf.write(string: "Travel time to work: \(travelWorkTime)", toCharacteristic: strongSelf.travelTimeCharacteristic)
+                strongSelf.disconnectInstatly()
             })
             .addDisposableTo(disposeBag)
     }
