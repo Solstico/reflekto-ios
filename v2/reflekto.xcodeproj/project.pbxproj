@@ -355,13 +355,13 @@
 					7CBA96781EC38BBA0088D4AF = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5VQHC59Q8V;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 7CF502DE1EB4D5910039D38D;
 					};
 					7CF502DE1EB4D5910039D38D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 24H6N4C77D;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 5VQHC59Q8V;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -716,14 +716,15 @@
 			baseConfigurationReference = 9A08E337E86588E83121C80D /* Pods-reflekto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 24H6N4C77D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5VQHC59Q8V;
 				INFOPLIST_FILE = reflekto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "05ddef7f-2bd3-4dcb-8e19-a6a00308e258";
-				PROVISIONING_PROFILE_SPECIFIER = "KISS Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -733,15 +734,15 @@
 			baseConfigurationReference = DF0BDE2C6F95B6A914950AAA /* Pods-reflekto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 24H6N4C77D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5VQHC59Q8V;
 				INFOPLIST_FILE = reflekto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82acd4a5-d8bf-48a3-97b4-9ef88ae526f1";
-				PROVISIONING_PROFILE_SPECIFIER = "KISS AdHoc";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
