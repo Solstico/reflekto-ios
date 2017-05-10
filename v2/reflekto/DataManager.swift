@@ -46,7 +46,8 @@ class DataManager {
         let task = session.dataTask(with: urlComponents.url! as URL) { (data, response, error) in
             DispatchQueue.main.async {
                 guard error == nil else {
-                    observer.onError(DataManagerError.apiError)
+                    observer.onNext("")
+                    observer.onCompleted()
                     return
                 }
                 do {
@@ -63,7 +64,8 @@ class DataManager {
                         observer.onCompleted()
                     }
                 } catch {
-                    observer.onError(DataManagerError.jsonError)
+                    observer.onNext("")
+                    observer.onCompleted()
                 }
             }
         }
@@ -86,7 +88,8 @@ class DataManager {
         let events = eventStore.events(matching: predicate)
         
         guard let event = events.first else {
-            observer.onError(DataManagerError.eventKitError)
+            observer.onNext("")
+            observer.onCompleted()
             return Disposables.create { }
         }
         
@@ -124,7 +127,8 @@ class DataManager {
         case 0...3:
             observer.onNext("Good night")
         default:
-            observer.onError(DataManagerError.wtfError)
+            observer.onNext("")
+            observer.onCompleted()
         }
         observer.onCompleted()
         return Disposables.create { }

@@ -68,6 +68,19 @@ class BluetoothManager: NSObject {
     override init() {
         super.init()
         manager = CBCentralManager(delegate: self, queue: bluetoothQueue)
+        
+        
+        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.name, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
+            .subscribe(onNext: { (timestamp, weather, nextEvent, name, greeting, compliment, unreadMailsCount, travelWorkTime) in
+                print("Timestamp: \(timestamp)")
+                print("Weather: \(weather)")
+                print("Next Event: \(nextEvent)")
+                print("Greeting: \(greeting)")
+                print("Compliment: \(compliment)")
+                print("Unread mails count: \(unreadMailsCount)")
+                print("Travel time to work: \(travelWorkTime)")
+            })
+            .addDisposableTo(disposeBag)
     }
     
 }
