@@ -41,8 +41,8 @@ class BluetoothManager: NSObject {
     fileprivate static let unreadEmailsCharacteristicCBUUID = CBUUID(string: "74680022-2069-7320-7265-666c656b746f")
     fileprivate static let travelTimeCharacteristicCBUUID = CBUUID(string: "74680023-2069-7320-7265-666c656b746f")
     fileprivate static let nameCharacteristicCBUUID = CBUUID(string: "74680024-2069-7320-7265-666c656b746f")
-    fileprivate static let greetingCharacteristicCBUUID = CBUUID(string: "74680026-2069-7320-7265-666c656b746f")
-    fileprivate static let complimentCharacteristicCBUUID = CBUUID(string: "74680025-2069-7320-7265-666c656b746f")
+    fileprivate static let greetingCharacteristicCBUUID = CBUUID(string: "74680025-2069-7320-7265-666c656b746f")
+    fileprivate static let complimentCharacteristicCBUUID = CBUUID(string: "74680026-2069-7320-7265-666c656b746f")
     fileprivate static let configurationCharacteristicCBUUID = CBUUID(string: "7468BEEF-2069-7320-7265-666c656b746f")
     
     fileprivate var timeCharacteristic: CBCharacteristic!
