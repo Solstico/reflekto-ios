@@ -112,7 +112,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
         print("----------- Diconnected from Bluetooth mirror ------------------")
         let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
             print("----------- Scanner turned on again ------------------")
-            self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
+            self.central.connect(self.mirrorPeripheral, options: nil)
         }
         RunLoop.main.add(timer, forMode: .commonModes)
         
