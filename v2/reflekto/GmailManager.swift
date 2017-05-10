@@ -24,10 +24,16 @@ class GmailManager: NSObject, GIDSignInDelegate {
     
     
     func getUnreadMails() {
-        GIDSignIn.sharedInstance().signInSilently()
+        DispatchQueue.main.async {
+            GIDSignIn.sharedInstance().signInSilently()
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard error == nil else {
+            unreadEmailsCountResponse?(0)
+            return
+        }
         self.service.authorizer = user.authentication.fetcherAuthorizer()
         let query = GTLRGmailQuery_UsersMessagesList.query(withUserId: "me")
         query.q = "is:unread"

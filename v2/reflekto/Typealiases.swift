@@ -9,3 +9,4 @@
 import Foundation
 
 typealias Location = (lon: Double, lat: Double)
+typealias Weather = (city: String, wind: String, additionalInfo: String)
