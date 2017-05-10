@@ -30,6 +30,7 @@ class DashboardViewController: BaseViewController {
     override func initializeView() {
         turnOnButton.rx.tap
             .subscribe(onNext: { [unowned self] in
+                isBackgroundModeEnabled = true
                 self.appDelegate.bluetoothManager = BluetoothManager()
                 self.updateBluetoothManagerStatus()
             })
@@ -38,6 +39,7 @@ class DashboardViewController: BaseViewController {
         
         turnOffButton.rx.tap
             .subscribe(onNext: { [unowned self] in
+                isBackgroundModeEnabled = false
                 self.appDelegate.bluetoothManager = nil
                 self.updateBluetoothManagerStatus()
             })

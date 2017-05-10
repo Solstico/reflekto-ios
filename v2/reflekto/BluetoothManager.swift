@@ -79,11 +79,13 @@ extension BluetoothManager: CBCentralManagerDelegate {
         guard central.state == .poweredOn else {
             return
         }
+        print("----------- Scanner turned on ------------------")
         manager.scanForPeripherals(withServices: advertisedServicesToDiscover)
     }
     
     //MARK: Discover handlers
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print("----------- Mirror discovered ------------------")
         central.stopScan()
         self.mirrorPeripheral = peripheral
         central.connect(mirrorPeripheral, options: nil)
@@ -109,6 +111,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("----------- Diconnected from Bluetooth mirror ------------------")
         let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
+            print("----------- Scanner turned on again ------------------")
             self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
         }
         RunLoop.main.add(timer, forMode: .commonModes)
@@ -132,6 +135,7 @@ extension BluetoothManager: CBPeripheralDelegate {
         self.mapCharacteristicsToObjects(characteristics)
         self.characteristicsDiscoveredCount += characteristics.count
         if characteristicsDiscoveredCount >= characteristicsToDiscoverCount {
+            print("----------- Discovered characteristics ------------------")
             onAllCharacteristicsDiscovered()
         }
     }
@@ -170,9 +174,11 @@ extension BluetoothManager: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         if Int(RSSI) > -69 {
+            print("----------- Mirror in range, started discovering services ------------------")
             clearDiscoveredItems()
             mirrorPeripheral.discoverServices(serviceCBUUIDs)
         } else {
+            print("----------- Mirror too far, disconnecting ------------------")
             manager.cancelPeripheralConnection(mirrorPeripheral)
         }
     }
