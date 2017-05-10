@@ -107,9 +107,10 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("----------- Diconnected from Bluetooth mirror ------------------")
-//        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
+        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
             self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
-//        }
+        }
+        RunLoop.main.add(timer, forMode: .commonModes)
         
     }
     
@@ -216,7 +217,7 @@ extension BluetoothManager {
         fetchDataAndWriteToMirror()
     }
     
-    private func fetchDataAndWriteToMirror() {
+private func fetchDataAndWriteToMirror() {
         initializeConnection()
         Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.name, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
             .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, name, greeting, compliment, unreadMailsCount, travelWorkTime) in
