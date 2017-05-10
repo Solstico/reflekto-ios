@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import UIKit
 import EventKit
+import MapKit
 
 enum DataManagerError: Error {
     case jsonError
@@ -142,6 +143,25 @@ class DataManager {
         }
         DataManager.gmailManager.getUnreadMails()
         return Disposables.create { }
+    }
+    
+    static let travelToWorkTime: Observable<Int> = Observable<Int>.create { observer in //in minutes
+        let homeLocationPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude:  Configuration.homeLocation.value.lat, longitude:  Configuration.homeLocation.value.lon))
+        let workLocationPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude:  Configuration.workLocation.value.lat, longitude:  Configuration.workLocation.value.lon))
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem(placemark: homeLocationPlacemark)
+        request.destination = MKMapItem(placemark: workLocationPlacemark)
+        request.transportType = .automobile
+        
+        let directions = MKDirections(request: request)
+        directions.calculateETA(completionHandler: { (response, error) in
+            guard error == nil, let response = response else { return }
+            observer.onNext(Int(response.expectedTravelTime/60))
+            observer.onCompleted()
+        })
+        return Disposables.create {
+            directions.cancel()
+        }
     }
     
 }
