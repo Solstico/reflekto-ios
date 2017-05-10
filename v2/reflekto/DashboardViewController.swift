@@ -31,7 +31,6 @@ class DashboardViewController: BaseViewController {
         turnOnButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 isBackgroundModeEnabled = true
-                self.appDelegate.bluetoothManager = BluetoothManager()
                 self.updateBluetoothManagerStatus()
             })
             
@@ -59,7 +58,7 @@ class DashboardViewController: BaseViewController {
     }
     
     private func updateBluetoothManagerStatus() {
-        changeStatusTo(turnedOn: appDelegate.bluetoothManager != nil)
+        changeStatusTo(turnedOn: isBackgroundModeEnabled)
     }
     
     private func navigateToSetup() {
