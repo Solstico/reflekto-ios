@@ -31,7 +31,7 @@ class DataManager {
         return Disposables.create { }
     }
     
-    static let weather: Observable<String> = Observable<String>.create { observer in
+    static let weather: Observable<Weather> = Observable<Weather>.create { observer in
         let apiKey = "2583095ca832807147ba1ffe3cac5286"
         let baseUrl = "https://api.darksky.net/forecast/"
         let location = Configuration.homeLocation.value
@@ -46,7 +46,7 @@ class DataManager {
         let task = session.dataTask(with: urlComponents.url! as URL) { (data, response, error) in
             DispatchQueue.main.async {
                 guard error == nil else {
-                    observer.onNext("")
+                    observer.onNext(Weather(city: "", wind: "", additionalInfo: ""))
                     observer.onCompleted()
                     return
                 }
@@ -60,11 +60,12 @@ class DataManager {
                         let string1 = "\(Configuration.city.value), \(temperatureC)°C"
                         let string2 = "Wind: \(windSpeed) km/h"
                         let string3 = "\(summary)"
-                        observer.onNext("\(string1)---\(string2)---\(string3)")
+                        let weatherObject = Weather(city: string1, wind: string2, additionalInfo: string3)
+                        observer.onNext(weatherObject)
                         observer.onCompleted()
                     }
                 } catch {
-                    observer.onNext("")
+                    observer.onNext(Weather(city: "", wind: "", additionalInfo: ""))
                     observer.onCompleted()
                 }
             }

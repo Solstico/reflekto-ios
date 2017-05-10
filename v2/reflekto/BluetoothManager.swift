@@ -68,19 +68,6 @@ class BluetoothManager: NSObject {
     override init() {
         super.init()
         manager = CBCentralManager(delegate: self, queue: bluetoothQueue)
-        
-        
-        Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.name, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
-            .subscribe(onNext: { (timestamp, weather, nextEvent, name, greeting, compliment, unreadMailsCount, travelWorkTime) in
-                print("Timestamp: \(timestamp)")
-                print("Weather: \(weather)")
-                print("Next Event: \(nextEvent)")
-                print("Greeting: \(greeting)")
-                print("Compliment: \(compliment)")
-                print("Unread mails count: \(unreadMailsCount)")
-                print("Travel time to work: \(travelWorkTime)")
-            })
-            .addDisposableTo(disposeBag)
     }
     
 }
@@ -113,9 +100,10 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("----------- Failed to connect ------------------")
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
+        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
             self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
         }
+        RunLoop.main.add(timer, forMode: .commonModes)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -185,7 +173,7 @@ extension BluetoothManager: CBPeripheralDelegate {
             clearDiscoveredItems()
             mirrorPeripheral.discoverServices(serviceCBUUIDs)
         } else {
-//            disconnectInstatly()
+            manager.cancelPeripheralConnection(mirrorPeripheral)
         }
     }
     
@@ -224,33 +212,32 @@ extension BluetoothManager {
     }
     
     fileprivate func onRangeChagedToNearby() {
-//        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { [unowned self] _ in
-//            self.disconnectInstatly()
-//        }
         fetchDataAndWriteToMirror()
     }
     
-private func fetchDataAndWriteToMirror() {
+    private func fetchDataAndWriteToMirror() {
         initializeConnection()
         Observable.zip(DataManager.timestamp, DataManager.weather, DataManager.nextEvent, DataManager.name, DataManager.greeting, DataManager.compliment, DataManager.unreadMailsCount, DataManager.travelToWorkTime)
             .subscribe(onNext: { [weak self] (timestamp, weather, nextEvent, name, greeting, compliment, unreadMailsCount, travelWorkTime) in
                 guard let strongSelf = self else { return }
                 var timestamp = timestamp
                 print("Timestamp: \(timestamp)")
-                print("Weather: \(weather)")
+                print("Weather 1: \(weather.city)")
+                print("Weather 2: \(weather.wind)")
+                print("Weather 3: \(weather.additionalInfo)")
                 print("Next Event: \(nextEvent)")
                 print("Greeting: \(greeting)")
                 print("Compliment: \(compliment)")
                 print("Unread mails count: \(unreadMailsCount)")
                 print("Travel time to work: \(travelWorkTime)")
                 strongSelf.mirrorPeripheral.writeValue(Data(bytes: &timestamp, count: 4), for: strongSelf.timeCharacteristic, type: .withResponse)
-                strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherCityCharacteristic)
-                strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherWindCharacteristic)
-                strongSelf.write(string: "Weather: \(weather)", toCharacteristic: strongSelf.weatherAdditionalCharacteristic)
+                strongSelf.write(string: weather.city, toCharacteristic: strongSelf.weatherCityCharacteristic)
+                strongSelf.write(string: weather.wind, toCharacteristic: strongSelf.weatherWindCharacteristic)
+                strongSelf.write(string: weather.additionalInfo, toCharacteristic: strongSelf.weatherAdditionalCharacteristic)
                 strongSelf.write(string: "Next Event: \(nextEvent)", toCharacteristic: strongSelf.nextEventCharacteristic)
-                strongSelf.write(string: "Name: \(name)", toCharacteristic: strongSelf.nameCharacteristic)
-                strongSelf.write(string: "Greeting: \(greeting)", toCharacteristic: strongSelf.greetingCharacteristic)
-                strongSelf.write(string: "Compliment: \(compliment)", toCharacteristic: strongSelf.complimentCharacteristic)
+                strongSelf.write(string: name, toCharacteristic: strongSelf.nameCharacteristic)
+                strongSelf.write(string: greeting, toCharacteristic: strongSelf.greetingCharacteristic)
+                strongSelf.write(string: compliment, toCharacteristic: strongSelf.complimentCharacteristic)
                 strongSelf.write(string: "Unread mails count: \(unreadMailsCount)", toCharacteristic: strongSelf.unreadEmailsCharacteristic)
                 strongSelf.write(string: "Travel time to work: \(travelWorkTime)", toCharacteristic: strongSelf.travelTimeCharacteristic)
                 strongSelf.disconnectInstatly()
