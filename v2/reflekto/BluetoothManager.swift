@@ -16,6 +16,7 @@ class BluetoothManager: NSObject {
     let disposeBag = DisposeBag()
     
     fileprivate let MAX_PACKAGE_SIZE = 19 //in bytes
+    fileprivate let TIME_TO_RETRY_CONNECTING: TimeInterval = 4 //in seconds
     
     //change here if services and characteristics count will change in the future
     fileprivate let servicesToDiscoverCount = 4
@@ -67,6 +68,9 @@ class BluetoothManager: NSObject {
     
     override init() {
         super.init()
+        if mirrorPeripheral != nil {
+            manager.cancelPeripheralConnection(mirrorPeripheral)
+        }
         manager = CBCentralManager(delegate: self, queue: bluetoothQueue)
     }
     
@@ -102,20 +106,20 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("----------- Failed to connect ------------------")
-        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
-            self.manager.scanForPeripherals(withServices: self.advertisedServicesToDiscover)
-        }
-        RunLoop.main.add(timer, forMode: .commonModes)
+        createReconnectionTimer()
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("----------- Diconnected from Bluetooth mirror ------------------")
-        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [unowned self] _ in
+        createReconnectionTimer()
+    }
+    
+    private func createReconnectionTimer() {
+        let reconnectTimer = Timer.init(timeInterval: TIME_TO_RETRY_CONNECTING, repeats: false, block: { [unowned self] _ in
             print("----------- Scanner turned on again ------------------")
             self.manager.connect(self.mirrorPeripheral, options: nil)
-        }
-        RunLoop.main.add(timer, forMode: .commonModes)
-        
+        })
+        RunLoop.main.add(reconnectTimer, forMode: .defaultRunLoopMode)
     }
     
 }
@@ -234,8 +238,8 @@ extension BluetoothManager {
                 print("Next Event: \(nextEvent)")
                 print("Greeting: \(greeting)")
                 print("Compliment: \(compliment)")
-                print("Unread mails count: \(unreadMailsCount)")
-                print("Travel time to work: \(travelWorkTime)")
+                print("You have \(unreadMailsCount) unread emails")
+                print("\(travelWorkTime) min to get work")
                 strongSelf.mirrorPeripheral.writeValue(Data(bytes: &timestamp, count: 4), for: strongSelf.timeCharacteristic, type: .withResponse)
                 strongSelf.write(string: weather.city, toCharacteristic: strongSelf.weatherCityCharacteristic)
                 strongSelf.write(string: weather.wind, toCharacteristic: strongSelf.weatherWindCharacteristic)
@@ -244,8 +248,8 @@ extension BluetoothManager {
                 strongSelf.write(string: name, toCharacteristic: strongSelf.nameCharacteristic)
                 strongSelf.write(string: greeting, toCharacteristic: strongSelf.greetingCharacteristic)
                 strongSelf.write(string: compliment, toCharacteristic: strongSelf.complimentCharacteristic)
-                strongSelf.write(string: "Unread mails count: \(unreadMailsCount)", toCharacteristic: strongSelf.unreadEmailsCharacteristic)
-                strongSelf.write(string: "Travel time to work: \(travelWorkTime)", toCharacteristic: strongSelf.travelTimeCharacteristic)
+                strongSelf.write(string: "You have \(unreadMailsCount) unread emails", toCharacteristic: strongSelf.unreadEmailsCharacteristic)
+                strongSelf.write(string: "\(travelWorkTime) min to get work", toCharacteristic: strongSelf.travelTimeCharacteristic)
                 strongSelf.disconnectInstatly()
             })
             .addDisposableTo(disposeBag)
@@ -258,44 +262,11 @@ extension BluetoothManager {
     
     fileprivate func write(string: String?, toCharacteristic characteristic: CBCharacteristic) {
         guard let string = string else { return }
-        let withoutDiactirics = string.folding(options: .diacriticInsensitive, locale: Locale.current)
+        let withoutDiactirics = string.removedDiacritics
         guard let data = withoutDiactirics.data(using: .utf8) else { return }
-        let dividedData = divideIntoPackages(data)
+        let dividedData = data.divideIntoPackages(maxPackageSizeInBytes: MAX_PACKAGE_SIZE)
         for eachData in dividedData {
             mirrorPeripheral.writeValue(eachData, for: characteristic, type: .withResponse)
-        }
-    }
-    
-    private func divideIntoPackages(_ data: Data) -> [Data] {
-        let startOfTextData = Data(repeating: 0x02, count: 1)
-        let endOfTextData = Data(repeating: 0x03, count: 1)
-        if data.count > MAX_PACKAGE_SIZE {
-            var toReturnDatas = [Data]()
-            var package = Data()
-            for (index, byte) in data.enumerated() {
-                if index == 0 {
-                    package.append(startOfTextData)
-                }
-                if index == data.count - 1 {
-                    package.append(byte)
-                    package.append(endOfTextData)
-                }
-                
-                if package.count >= MAX_PACKAGE_SIZE || index == data.count - 1 {
-                    toReturnDatas.append(package)
-                    package = Data()
-                    package.append(byte)
-                } else {
-                    package.append(byte)
-                }
-            }
-            return toReturnDatas
-        } else {
-            var toReturnData = Data()
-            toReturnData.append(startOfTextData)
-            toReturnData.append(data)
-            toReturnData.append(endOfTextData)
-            return [toReturnData]
         }
     }
     

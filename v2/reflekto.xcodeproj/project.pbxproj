@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C83507F4BF8578855DB486D /* Pods_reflektoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6512336CB38346E5949C5C /* Pods_reflektoTests.framework */; };
 		7C617ECA1EB4DB6D00A35886 /* REFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617EC91EB4DB6D00A35886 /* REFNavigationController.swift */; };
 		7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ECD1EB4DBF300A35886 /* UIColorExtension.swift */; };
 		7C617ED41EB4DBF300A35886 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C617ECF1EB4DBF300A35886 /* NSObjectExtension.swift */; };
@@ -32,6 +33,9 @@
 		7C6BEBBE1EB5DB77009D97C8 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */; };
 		7CBA966E1EC0EDC00088D4AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CBA966D1EC0EDC00088D4AF /* GoogleService-Info.plist */; };
 		7CBA96701EC0F1AA0088D4AF /* GmailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBA966F1EC0F1AA0088D4AF /* GmailManager.swift */; };
+		7CBA96721EC38A1B0088D4AF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBA96711EC38A1B0088D4AF /* StringExtension.swift */; };
+		7CBA96741EC38A6F0088D4AF /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBA96731EC38A6F0088D4AF /* DataExtension.swift */; };
+		7CBA967C1EC38BBA0088D4AF /* reflektoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBA967B1EC38BBA0088D4AF /* reflektoTests.swift */; };
 		7CF502E31EB4D5910039D38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E21EB4D5910039D38D /* AppDelegate.swift */; };
 		7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF502E41EB4D5910039D38D /* BaseViewController.swift */; };
 		7CF502E81EB4D5910039D38D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF502E61EB4D5910039D38D /* Setup.storyboard */; };
@@ -40,7 +44,20 @@
 		BF07AA977797182CAA59F938 /* Pods_reflekto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0777B49B569BC5F41356B7C /* Pods_reflekto.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7CBA967E1EC38BBA0088D4AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CF502D71EB4D5910039D38D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CF502DE1EB4D5910039D38D;
+			remoteInfo = reflekto;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		48647629D5DDF35005381A5D /* Pods-reflektoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reflektoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reflektoTests/Pods-reflektoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5419BB02B8C6B3BA79022067 /* Pods-reflektoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reflektoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-reflektoTests/Pods-reflektoTests.release.xcconfig"; sourceTree = "<group>"; };
+		5C6512336CB38346E5949C5C /* Pods_reflektoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reflektoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C617EC91EB4DB6D00A35886 /* REFNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REFNavigationController.swift; sourceTree = "<group>"; };
 		7C617ECD1EB4DBF300A35886 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		7C617ECF1EB4DBF300A35886 /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
@@ -66,6 +83,11 @@
 		7C6BEBBD1EB5DB77009D97C8 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		7CBA966D1EC0EDC00088D4AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CBA966F1EC0F1AA0088D4AF /* GmailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailManager.swift; sourceTree = "<group>"; };
+		7CBA96711EC38A1B0088D4AF /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		7CBA96731EC38A6F0088D4AF /* DataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		7CBA96791EC38BBA0088D4AF /* reflektoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reflektoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CBA967B1EC38BBA0088D4AF /* reflektoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reflektoTests.swift; sourceTree = "<group>"; };
+		7CBA967D1EC38BBA0088D4AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF502DF1EB4D5910039D38D /* reflekto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reflekto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF502E21EB4D5910039D38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF502E41EB4D5910039D38D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +101,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7CBA96761EC38BBA0088D4AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C83507F4BF8578855DB486D /* Pods_reflektoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CF502DC1EB4D5910039D38D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +126,8 @@
 			children = (
 				9A08E337E86588E83121C80D /* Pods-reflekto.debug.xcconfig */,
 				DF0BDE2C6F95B6A914950AAA /* Pods-reflekto.release.xcconfig */,
+				48647629D5DDF35005381A5D /* Pods-reflektoTests.debug.xcconfig */,
+				5419BB02B8C6B3BA79022067 /* Pods-reflektoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -159,6 +191,8 @@
 				7C617ECD1EB4DBF300A35886 /* UIColorExtension.swift */,
 				7C617ECF1EB4DBF300A35886 /* NSObjectExtension.swift */,
 				7C617ED01EB4DBF300A35886 /* UITableViewExtension.swift */,
+				7CBA96711EC38A1B0088D4AF /* StringExtension.swift */,
+				7CBA96731EC38A6F0088D4AF /* DataExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -213,10 +247,20 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		7CBA967A1EC38BBA0088D4AF /* reflektoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CBA967B1EC38BBA0088D4AF /* reflektoTests.swift */,
+				7CBA967D1EC38BBA0088D4AF /* Info.plist */,
+			);
+			path = reflektoTests;
+			sourceTree = "<group>";
+		};
 		7CF502D61EB4D5910039D38D = {
 			isa = PBXGroup;
 			children = (
 				7CF502E11EB4D5910039D38D /* reflekto */,
+				7CBA967A1EC38BBA0088D4AF /* reflektoTests */,
 				7CF502E01EB4D5910039D38D /* Products */,
 				2FEC7FEA3F1E4D83BCE274F0 /* Pods */,
 				F86621F64B7F2C92A0CCE31C /* Frameworks */,
@@ -227,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				7CF502DF1EB4D5910039D38D /* reflekto.app */,
+				7CBA96791EC38BBA0088D4AF /* reflektoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +293,7 @@
 			children = (
 				7C617EF01EB5035100A35886 /* MapKit.framework */,
 				E0777B49B569BC5F41356B7C /* Pods_reflekto.framework */,
+				5C6512336CB38346E5949C5C /* Pods_reflektoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -255,6 +301,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7CBA96781EC38BBA0088D4AF /* reflektoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CBA96801EC38BBA0088D4AF /* Build configuration list for PBXNativeTarget "reflektoTests" */;
+			buildPhases = (
+				284C25C5B2030D3A967D9923 /* [CP] Check Pods Manifest.lock */,
+				7CBA96751EC38BBA0088D4AF /* Sources */,
+				7CBA96761EC38BBA0088D4AF /* Frameworks */,
+				7CBA96771EC38BBA0088D4AF /* Resources */,
+				CD815154F8496640A5B79A22 /* [CP] Embed Pods Frameworks */,
+				8F410343FEFB4ADC57116861 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CBA967F1EC38BBA0088D4AF /* PBXTargetDependency */,
+			);
+			name = reflektoTests;
+			productName = reflektoTests;
+			productReference = 7CBA96791EC38BBA0088D4AF /* reflektoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7CF502DE1EB4D5910039D38D /* reflekto */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CF502F11EB4D5910039D38D /* Build configuration list for PBXNativeTarget "reflekto" */;
@@ -285,10 +352,16 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Solstico;
 				TargetAttributes = {
+					7CBA96781EC38BBA0088D4AF = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 5VQHC59Q8V;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7CF502DE1EB4D5910039D38D;
+					};
 					7CF502DE1EB4D5910039D38D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 24H6N4C77D;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 5VQHC59Q8V;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -317,11 +390,19 @@
 			projectRoot = "";
 			targets = (
 				7CF502DE1EB4D5910039D38D /* reflekto */,
+				7CBA96781EC38BBA0088D4AF /* reflektoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7CBA96771EC38BBA0088D4AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CF502DD1EB4D5910039D38D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +433,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		284C25C5B2030D3A967D9923 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8F410343FEFB4ADC57116861 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reflektoTests/Pods-reflektoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B26B611FCCCB83DF4C6C316A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +476,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reflekto/Pods-reflekto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD815154F8496640A5B79A22 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reflektoTests/Pods-reflektoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E2A3A031A73FAE5F8767B6C3 /* [CP] Copy Pods Resources */ = {
@@ -385,6 +511,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7CBA96751EC38BBA0088D4AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CBA967C1EC38BBA0088D4AF /* reflektoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CF502DB1EB4D5910039D38D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +530,7 @@
 				7C617EEB1EB500A600A35886 /* SetupHomeLocationViewController.swift in Sources */,
 				7C6BEBB51EB50EE6009D97C8 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				7C69EA681EB62AAE00380D81 /* DataManager.swift in Sources */,
+				7CBA96721EC38A1B0088D4AF /* StringExtension.swift in Sources */,
 				7C617ED81EB4DC7400A35886 /* Defaults.swift in Sources */,
 				7C617ED41EB4DBF300A35886 /* NSObjectExtension.swift in Sources */,
 				7C6BEBAE1EB50742009D97C8 /* Enums.swift in Sources */,
@@ -407,6 +542,7 @@
 				7CF502E51EB4D5910039D38D /* BaseViewController.swift in Sources */,
 				7C6BEBB01EB50A8A009D97C8 /* Typealiases.swift in Sources */,
 				7C6BEBB41EB50EE6009D97C8 /* CLLocationManager+Rx.swift in Sources */,
+				7CBA96741EC38A6F0088D4AF /* DataExtension.swift in Sources */,
 				7C617EED1EB500C400A35886 /* SetupWorkLocationViewController.swift in Sources */,
 				7C617ED21EB4DBF300A35886 /* UIColorExtension.swift in Sources */,
 				7C6BEBBE1EB5DB77009D97C8 /* BluetoothManager.swift in Sources */,
@@ -417,6 +553,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CBA967F1EC38BBA0088D4AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CF502DE1EB4D5910039D38D /* reflekto */;
+			targetProxy = 7CBA967E1EC38BBA0088D4AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7CF502E61EB4D5910039D38D /* Setup.storyboard */ = {
@@ -438,6 +582,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7CBA96811EC38BBA0088D4AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48647629D5DDF35005381A5D /* Pods-reflektoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5VQHC59Q8V;
+				INFOPLIST_FILE = reflektoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflektoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/reflekto.app/reflekto";
+			};
+			name = Debug;
+		};
+		7CBA96821EC38BBA0088D4AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5419BB02B8C6B3BA79022067 /* Pods-reflektoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5VQHC59Q8V;
+				INFOPLIST_FILE = reflektoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflektoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/reflekto.app/reflekto";
+			};
+			name = Release;
+		};
 		7CF502EF1EB4D5910039D38D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -538,14 +716,15 @@
 			baseConfigurationReference = 9A08E337E86588E83121C80D /* Pods-reflekto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 24H6N4C77D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5VQHC59Q8V;
 				INFOPLIST_FILE = reflekto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "05ddef7f-2bd3-4dcb-8e19-a6a00308e258";
-				PROVISIONING_PROFILE_SPECIFIER = "KISS Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -555,15 +734,15 @@
 			baseConfigurationReference = DF0BDE2C6F95B6A914950AAA /* Pods-reflekto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 24H6N4C77D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5VQHC59Q8V;
 				INFOPLIST_FILE = reflekto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solstico.reflekto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82acd4a5-d8bf-48a3-97b4-9ef88ae526f1";
-				PROVISIONING_PROFILE_SPECIFIER = "KISS AdHoc";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -571,6 +750,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7CBA96801EC38BBA0088D4AF /* Build configuration list for PBXNativeTarget "reflektoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CBA96811EC38BBA0088D4AF /* Debug */,
+				7CBA96821EC38BBA0088D4AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7CF502DA1EB4D5910039D38D /* Build configuration list for PBXProject "reflekto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

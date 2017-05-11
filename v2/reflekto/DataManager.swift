@@ -26,7 +26,8 @@ class DataManager {
     static let timestamp: Observable<Int> = Observable<Int>.create { observer in
         let date = Date()
         let timestamp = Int(date.timeIntervalSince1970)
-        observer.onNext(timestamp)
+        let timestampWithTimezone = timestamp + TimeZone.current.secondsFromGMT()
+        observer.onNext(timestampWithTimezone)
         observer.onCompleted()
         return Disposables.create { }
     }
