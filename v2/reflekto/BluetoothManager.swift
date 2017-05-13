@@ -15,7 +15,7 @@ class BluetoothManager: NSObject {
     
     let disposeBag = DisposeBag()
     
-    fileprivate let MAX_PACKAGE_SIZE = 19 //in bytes
+    fileprivate let MAX_PACKAGE_SIZE = 18 //in bytes
     fileprivate let TIME_TO_RETRY_CONNECTING: TimeInterval = 4 //in seconds
     
     //change here if services and characteristics count will change in the future
