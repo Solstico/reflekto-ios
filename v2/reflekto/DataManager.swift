@@ -37,7 +37,7 @@ class DataManager {
         let baseUrl = "https://api.darksky.net/forecast/"
         let location = Configuration.homeLocation.value
         
-        var urlComponents = URLComponents(string: "\(baseUrl)\(apiKey)/\(location.lon),\(location.lat)")!
+        var urlComponents = URLComponents(string: "\(baseUrl)\(apiKey)/\(location.lat),\(location.lon)")!
         urlComponents.queryItems = [
             URLQueryItem(name: "lang", value: "en"),
             URLQueryItem(name: "units", value: "auto"),
@@ -53,12 +53,12 @@ class DataManager {
                 }
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                        let temperatureF = (json["currently"] as! [String: Any])["temperature"] as! Double
+                        let temperatureC = (json["currently"] as! [String: Any])["temperature"] as! Int
                         let windSpeed = (json["currently"] as! [String: Any])["windSpeed"] as! Int
                         let summary = (json["hourly"] as! [String: Any])["summary"] as! String
-                        let temperatureC = Int((temperatureF - 32) / 1.8)
+                        let icon = WeatherIcon.init(fromDarkskyApiIcon: ((json["currently"] as! [String: Any])["icon"] as! String))
 
-                        let string1 = "\(Configuration.city.value), \(temperatureC)°C"
+                        let string1 = "\(Configuration.city.value), \(temperatureC)C\(icon.rawValue)"
                         let string2 = "Wind: \(windSpeed) km/h"
                         let string3 = "\(summary)"
                         let weatherObject = Weather(city: string1, wind: string2, additionalInfo: string3)
