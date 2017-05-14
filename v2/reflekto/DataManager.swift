@@ -101,7 +101,7 @@ class DataManager {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         
-        observer.onNext("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+        observer.onNext("\(dateFormatter.string(from: event.startDate))\n\(event.title)")
         observer.onCompleted()
         return Disposables.create { }
     }
