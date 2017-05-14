@@ -37,7 +37,7 @@ class DataManager {
         let baseUrl = "https://api.darksky.net/forecast/"
         let location = Configuration.homeLocation.value
         
-        var urlComponents = URLComponents(string: "\(baseUrl)\(apiKey)/\(location.lon),\(location.lat)")!
+        var urlComponents = URLComponents(string: "\(baseUrl)\(apiKey)/\(location.lat),\(location.lon)")!
         urlComponents.queryItems = [
             URLQueryItem(name: "lang", value: "en"),
             URLQueryItem(name: "units", value: "auto"),
@@ -53,12 +53,12 @@ class DataManager {
                 }
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                        let temperatureF = (json["currently"] as! [String: Any])["temperature"] as! Double
+                        let temperatureC = (json["currently"] as! [String: Any])["temperature"] as! Int
                         let windSpeed = (json["currently"] as! [String: Any])["windSpeed"] as! Int
                         let summary = (json["hourly"] as! [String: Any])["summary"] as! String
-                        let temperatureC = Int((temperatureF - 32) / 1.8)
+                        let icon = WeatherIcon.init(fromDarkskyApiIcon: ((json["currently"] as! [String: Any])["icon"] as! String))
 
-                        let string1 = "\(Configuration.city.value), \(temperatureC)°C"
+                        let string1 = "\(Configuration.city.value), \(temperatureC)C\(icon.rawValue)"
                         let string2 = "Wind: \(windSpeed) km/h"
                         let string3 = "\(summary)"
                         let weatherObject = Weather(city: string1, wind: string2, additionalInfo: string3)
@@ -101,7 +101,7 @@ class DataManager {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         
-        observer.onNext("\(dateFormatter.string(from: event.startDate)) - \(event.title)")
+        observer.onNext("\(dateFormatter.string(from: event.startDate))\n\(event.title)")
         observer.onCompleted()
         return Disposables.create { }
     }
@@ -137,14 +137,12 @@ class DataManager {
     }
     
     static let compliment: Observable<String> = Observable<String>.create { observer in
-        let compliments = ["Your smile is contagious", "You look great today",
-                           "You're a smart cookie", "On a scale from 1 to 10, you're an 11",
-                           "You have impeccable manners", "You should be proud of yourself",
-                           "You're like sunshine on a rainy day", "Your hair looks stunning",
-                           "You're gorgeous", "You're amazing",
-                           ]
-        let randomNumber = Int(arc4random_uniform(10))
-        observer.onNext(compliments[randomNumber])
+        let femaleCompliments = ["You look strong today", "You're a smart cookie", "I believe in you", "Your hair looks stunning", "You are so pretty", "I respect you", "You have a beautiful smile", "I love your voice", "You smell magnificent", "You are the strongest woman", "You are the toughest woman", "I love your eyes", "You are so beautiful", "Your skin look great!", "I'm so proud of you", "I like your style", "What would I do without you?", "I love the way you look at me", "You are an amazing person", "You look great today", "You're gorgeous"]
+        let maleCompliments = ["You look strong today", "You look so handsome", "I believe in you", "You look extra manly today", "You’re the strongest man", "I respect you", "You have a beautiful smile", "I love your deep voice", "You smell magnificent", "You are the strongest man", "You are the toughest man", "I love your eyes", "You are so handy!", "Your arms look great!", "I'm so proud of you", "I like your style", "What would I do without you?", "You are the perfect height", "You are an amazing person", "You look great today", "You're gorgeous"]
+        
+        let randomNumber = Int(arc4random_uniform(UInt32(femaleCompliments.count)))
+        let sex = Configuration.sex.value
+        observer.onNext(sex == .male ? maleCompliments[randomNumber] : femaleCompliments[randomNumber])
         observer.onCompleted()
         return Disposables.create { }
     }
