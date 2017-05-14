@@ -137,14 +137,12 @@ class DataManager {
     }
     
     static let compliment: Observable<String> = Observable<String>.create { observer in
-        let compliments = ["Your smile is contagious", "You look great today",
-                           "You're a smart cookie", "On a scale from 1 to 10, you're an 11",
-                           "You have impeccable manners", "You should be proud of yourself",
-                           "You're like sunshine on a rainy day", "Your hair looks stunning",
-                           "You're gorgeous", "You're amazing",
-                           ]
-        let randomNumber = Int(arc4random_uniform(10))
-        observer.onNext(compliments[randomNumber])
+        let femaleCompliments = ["You look strong today", "You're a smart cookie", "I believe in you", "Your hair looks stunning", "You are so pretty", "I respect you", "You have a beautiful smile", "I love your voice", "You smell magnificent", "You are the strongest woman", "You are the toughest woman", "I love your eyes", "You are so beautiful", "Your skin look great!", "I'm so proud of you", "I like your style", "What would I do without you?", "I love the way you look at me", "You are an amazing person", "You look great today", "You're gorgeous"]
+        let maleCompliments = ["You look strong today", "You look so handsome", "I believe in you", "You look extra manly today", "You’re the strongest man", "I respect you", "You have a beautiful smile", "I love your deep voice", "You smell magnificent", "You are the strongest man", "You are the toughest man", "I love your eyes", "You are so handy!", "Your arms look great!", "I'm so proud of you", "I like your style", "What would I do without you?", "You are the perfect height", "You are an amazing person", "You look great today", "You're gorgeous"]
+        
+        let randomNumber = Int(arc4random_uniform(UInt32(femaleCompliments.count)))
+        let sex = Configuration.sex.value
+        observer.onNext(sex == .male ? maleCompliments[randomNumber] : femaleCompliments[randomNumber])
         observer.onCompleted()
         return Disposables.create { }
     }
