@@ -14,42 +14,43 @@ enum Sex: Int {
     case female
 }
 
-enum WeatherIcon: Int {
-    case clearDay = 1
-    case clearNight
-    case rain
-    case snow
-    case sleet
-    case wind
-    case fog
-    case cloude
-    case partlyCloudyDay
-    case partlyCloudyNight
+enum WeatherIcon: String {
+    case clearDay = "1"
+    case clearNight = "2"
+    case rain = "3"
+    case snow = "4"
+    case sleet = "5"
+    case wind = "6"
+    case fog = "7"
+    case cloudy = "8"
+    case partlyCloudyDay = "9"
+    case partlyCloudyNight  = ":"
     
     init(fromDarkskyApiIcon text: String) {
         switch text {
         case "clear-day":
-            self.init(rawValue: 1)!
+            self = .clearDay
         case "clear-night":
-            self.init(rawValue: 2)!
+            self = .clearNight
         case "rain":
-            self.init(rawValue: 3)!
+            self = .rain
         case "snow":
-            self.init(rawValue: 4)!
+            self = .snow
         case "sleet":
-            self.init(rawValue: 5)!
+            self = .sleet
         case "wind":
-            self.init(rawValue: 6)!
+            self = .wind
         case "fog":
-            self.init(rawValue: 7)!
+            self = .fog
         case "cloudy":
-            self.init(rawValue: 8)!
+            self = .cloudy
         case "partly-cloudy-day":
-            self.init(rawValue: 9)!
+            self = .partlyCloudyDay
         case "partly-cloudy-night":
-            self.init(rawValue: 10)!
+            self = .partlyCloudyNight
         default:
-            self.init(rawValue: 9)!
+            self = .partlyCloudyDay
         }
     }
+    
 }
