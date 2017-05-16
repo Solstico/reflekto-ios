@@ -59,7 +59,7 @@ class DataManager {
                         let icon = WeatherIcon.init(fromDarkskyApiIcon: ((json["currently"] as! [String: Any])["icon"] as! String))
 
                         let string1 = "\(Configuration.city.value), \(temperatureC)C\(icon.rawValue)"
-                        let string2 = "Wind: \(windSpeed) km/h"
+                        let string2 = "Wind: \(windSpeed) m/s"
                         let string3 = "\(summary)"
                         let weatherObject = Weather(city: string1, wind: string2, additionalInfo: string3)
                         observer.onNext(weatherObject)
