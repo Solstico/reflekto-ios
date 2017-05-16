@@ -100,7 +100,8 @@ extension BluetoothManager: CBCentralManagerDelegate {
         print("----------- Connected to Bluetooth mirror ------------------")
         if peripheral == mirrorPeripheral {
             mirrorPeripheral.delegate = self
-            mirrorPeripheral.readRSSI()
+            clearDiscoveredItems()
+            mirrorPeripheral.discoverServices(serviceCBUUIDs)
         }
     }
     
@@ -173,17 +174,6 @@ extension BluetoothManager: CBPeripheralDelegate {
                 print("Error whille mapping characteristic: \(characteristic.uuid.uuidString)")
                 break
             }
-        }
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
-        if Int(RSSI) > -69 {
-            print("----------- Mirror in range, started discovering services ------------------")
-            clearDiscoveredItems()
-            mirrorPeripheral.discoverServices(serviceCBUUIDs)
-        } else {
-            print("----------- Mirror too far, disconnecting ------------------")
-            manager.cancelPeripheralConnection(mirrorPeripheral)
         }
     }
     
