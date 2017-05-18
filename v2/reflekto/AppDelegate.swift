@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import Google
+import GoogleSignIn
+
+let DEBUG = false
+var isBackgroundModeEnabled = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationController: REFNavigationController!
+    var bluetoothManager: BluetoothManager!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        configureGoogleSignIn()
+        configureInitApplicationScreen()
+        
         return true
     }
 
@@ -27,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        if isBackgroundModeEnabled {
+            bluetoothManager = BluetoothManager()
+        }
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -42,5 +56,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate {
+    
+    fileprivate func configureInitApplicationScreen() {
+        if Configuration.hasEverything {
+            navigationController = REFNavigationController(rootViewController: DashboardViewController.instantiate()!)
+        } else {
+            navigationController = REFNavigationController(rootViewController: SetupInfoViewController.instantiate()!)
+        }
+        
+        if DEBUG {
+            navigationController = REFNavigationController(rootViewController: SetupAccessViewController.instantiate()!)
+        }
+        window?.replaceRootViewControllerWith(navigationController, animated: true)
+    }
+    
+}
+
+//MARK: Methods for Google SignIn
+extension AppDelegate {
+    
+    fileprivate func configureGoogleSignIn() {
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
+    }
+ 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
+        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+}
+
+//MARK: Helepers for replacing root view controller with animation
+extension UIWindow {
+    func replaceRootViewControllerWith(_ replacementController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+        let snapshotImageView = UIImageView(image: self.snapshot())
+        self.addSubview(snapshotImageView)
+        
+        let dismissCompletion = { () -> Void in // dismiss all modal view controllers
+            self.rootViewController = replacementController
+            self.bringSubview(toFront: snapshotImageView)
+            if animated {
+                UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                    snapshotImageView.alpha = 0
+                }, completion: { (success) -> Void in
+                    snapshotImageView.removeFromSuperview()
+                    completion?()
+                })
+            }
+            else {
+                snapshotImageView.removeFromSuperview()
+                completion?()
+            }
+        }
+        if self.rootViewController!.presentedViewController != nil {
+            self.rootViewController!.dismiss(animated: false, completion: dismissCompletion)
+        }
+        else {
+            dismissCompletion()
+        }
+    }
+}
+
+extension UIView {
+    func snapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result!
+    }
 }
 
