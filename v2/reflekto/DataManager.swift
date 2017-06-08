@@ -61,8 +61,8 @@ class DataManager {
                 }
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                        let temperatureC = (json["currently"] as! [String: Any])["temperature"] as! Int
-                        let windSpeed = (json["currently"] as! [String: Any])["windSpeed"] as! Int
+                        let temperatureC = Int((json["currently"] as! [String: Any])["temperature"] as! NSNumber)
+                        let windSpeed = Int((json["currently"] as! [String: Any])["windSpeed"] as! NSNumber)
                         let summary = (json["hourly"] as! [String: Any])["summary"] as! String
                         let icon = WeatherIcon.init(fromDarkskyApiIcon: ((json["currently"] as! [String: Any])["icon"] as! String))
 
